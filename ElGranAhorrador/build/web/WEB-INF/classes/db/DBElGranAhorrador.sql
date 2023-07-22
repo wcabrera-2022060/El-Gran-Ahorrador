@@ -5,7 +5,7 @@ use DBElGranAhorrador;
 
 -- --------- Entidades Sin FK --------- --
 Create table TipoEmpleado(
-	idTipoEmpleado int not null auto_increment,
+    idTipoEmpleado int not null auto_increment,
     tipoEmpleado varchar(100) not null,
     descipcion varchar(100) not null,
     departamento varchar(100) not null,
@@ -24,7 +24,7 @@ Create table Sucursales(
 Create table Login(
 	idLogin int not null auto_increment,
     usuario varchar(50) not null,
-    contrasena varchar(50) not null,
+    contraseña varchar(50) not null,
     tipoUsuario boolean not null,
     foto mediumblob,
     primary key PK_idLogin(idLogin)
