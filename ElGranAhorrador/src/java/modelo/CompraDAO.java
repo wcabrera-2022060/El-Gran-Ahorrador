@@ -1,6 +1,6 @@
 package modelo;
 
-// Luis Gerardo Cruz Muñoz 2019072 - ENTIDAD COMPRA
+// Luis Gerardo Cruz Muñoz 2019072 - Entidad Compra
 
 import config.Conexion;
 import java.sql.Connection;
@@ -61,7 +61,7 @@ public List listar(){
 
     public Compra listarCodigoCompra (int id) {
         Compra comp = new Compra  ();
-        String sql = "select C.cantidadProducto , C.idEmpleado , C.idCliente , C.idProducto from Compra C Where C.idCompra = 1" + id;
+        String sql = "select C.cantidadProducto , C.idEmpleado , C.idCliente , C.idProducto from Compra C Where C.idCompra = " + id;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
