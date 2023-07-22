@@ -24,7 +24,7 @@ Create table Sucursales(
 Create table Login(
 	idLogin int not null auto_increment,
     usuario varchar(50) not null,
-    contraseña varchar(50) not null,
+    contrasena varchar(50) not null,
     tipoUsuario boolean not null,
     foto mediumblob,
     primary key PK_idLogin(idLogin)
