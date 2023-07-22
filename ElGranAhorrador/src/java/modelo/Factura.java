@@ -71,6 +71,6 @@ public class Factura {
     public void setIdCupon(int idCupon) {
         this.idCupon = idCupon;
     }
+}
     
         
-}

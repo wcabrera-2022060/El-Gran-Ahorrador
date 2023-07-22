@@ -5,7 +5,7 @@ use DBElGranAhorrador;
 
 -- --------- Entidades Sin FK --------- --
 Create table TipoEmpleado(
-	idTipoEmpleado int not null auto_increment,
+    idTipoEmpleado int not null auto_increment,
     tipoEmpleado varchar(100) not null,
     descipcion varchar(100) not null,
     departamento varchar(100) not null,
@@ -252,9 +252,3 @@ Insert into Compra(cantidadProducto, idEmpleado, idCliente, idProducto)
 Insert into Factura(fecha, idCompra, idEnvio, idMetodoPago, idCupon)
 	values	('2023-07-05',1,1,1,1),
 			('2023-07-08',2,2,2,1);
-            
-select F.idFactura, F.fecha, F.idCompra, F.idEnvio, F.idMetodoPago, F.idCupon From Factura F;        
-
-select F.idFactura, F.fecha, F.idCompra, F.idEnvio, F.idMetodoPago, F.idCupon From Factura F where F.idFactura = 1; 
-
-Update Factura F set F.fecha =  '2023-01-01' where F.idFactura = 2;
