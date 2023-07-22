@@ -1,5 +1,7 @@
 package modelo;
 
+// Luis Gerardo Cruz Muñoz 2019072 - ENTIDAD COMPRA
+
 import config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +17,7 @@ public class CompraDAO {
     int resp;
     
 public List listar(){
-    String sql = "Select * from compra";
+    String sql = "select C.cantidadProducto , C.idEmpleado , C.idCliente , C.idProducto from Compra C";
     List<Compra> listaCompra = new ArrayList<>();
     try{
          con = cn.Conexion();
@@ -39,7 +41,8 @@ public List listar(){
 
 
     public int agregar (Compra com){
-        String sql = "insert into Compra ( idCompra, cantidadProducto, idEmpleado, idCliente, idProducto) values (?,?,?,?,?)";
+        String sql = "insert into Compra (idCompra, cantidadProducto, idEmpleado, idCliente, idProducto)\n" +
+                        "values (?, ?, ?, ?, ?)";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -56,7 +59,58 @@ public List listar(){
         return resp;
     }
 
-}    
+    public Compra listarCodigoCompra (int id) {
+        Compra comp = new Compra  ();
+        String sql = "select C.cantidadProducto , C.idEmpleado , C.idCliente , C.idProducto from Compra C Where C.idCompra = 1" + id;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+                while (rs.next()) {
+                    comp.setCantidadProducto(rs.getInt(2));
+                    comp.setIdEmpleado(rs.getInt(3));
+                    comp.setIdCliente(rs.getInt(4));
+                    comp.setIdProducto(rs.getInt(5));
+                
+                }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     
+        return comp;
+}     
+ 
+    public int actualizar (Compra comp) {
+        String sql = "UPDATE Compra SET CantidadProducto = ? , idEmpleado = ? , idCliente = ? , idProducto = ?" ;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(2,comp.getCantidadProducto());
+            ps.setInt(3,comp.getIdEmpleado());
+            ps.setInt(4,comp.getIdCliente());
+            ps.setInt(5,comp.getIdProducto());
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return resp;
+    }
+    
+    public void eliminar(int id) {
+        String sql = "delete from Compra = where idCompra" + id;
+            try{
+                con = cn.Conexion();
+                ps = con.prepareStatement(sql);
+                ps.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    
+    
+    }
     
 
+    }
