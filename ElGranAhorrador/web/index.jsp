@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
               <label>Usuario</label>
-              <input type="text" name="txtPass" class="form-control" />
+              <input type="text" name="txtUser" class="form-control" />
             </div>
             <div class="form-group">
               <label>Contraseña</label>
