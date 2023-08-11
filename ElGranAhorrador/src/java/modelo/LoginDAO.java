@@ -17,15 +17,18 @@ public class LoginDAO {
     ResultSet rs;
     int resp;
     String sql;
+
+    public LoginDAO() {
+    }
     
     public Login validarLogin(String usario, String contrasena){
         Login login = new Login();
         sql = "select L.idLogin, \n" +
                 "L.usuario, \n" +
-                "L.contraseña, \n" +
+                "L.contrasena, \n" +
                 "L.tipoUsuario, \n" +
                 "L.foto \n" +
-                "from Login  where usuario = ? and contraseña = ?";
+                "from Login L where usuario = ? and contrasena = ?";
         try{
            con = cn.Conexion();
            ps = con.prepareCall(sql);
@@ -48,7 +51,7 @@ public class LoginDAO {
     public List listarLogin(){
         sql = "select idLogin, \n" +
                 "L.usuario, \n" +
-                "L.contraseña, \n" +
+                "L.contrasena, \n" +
                 "L.tipoUsuario, \n" +
                 "L.foto \n" +
                     "from Login L;";
@@ -93,7 +96,7 @@ public class LoginDAO {
         Login log = new Login();
         sql = "select idLogin, \n" +
                 "L.usuario, \n" +
-                "L.contraseña, \n" +
+                "L.contrasena, \n" +
                 "L.tipoUsuario, \n" +
                 "L.foto \n" +
                     "from Login L " +

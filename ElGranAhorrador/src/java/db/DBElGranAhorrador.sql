@@ -24,7 +24,7 @@ Create table Sucursales(
 Create table Login(
 	idLogin int not null auto_increment,
     usuario varchar(50) not null,
-    contrasena varchar(50) not null,
+    contraseña varchar(50) not null,
     tipoUsuario boolean not null,
     foto mediumblob,
     primary key PK_idLogin(idLogin)
@@ -172,12 +172,6 @@ Create table Factura(
 
 -- ------------------ Insertar Datos ---------------------
 
-select 	L.idLogin,
-		L.usuario,
-		L.contrasena,
-		L.tipoUsuario,
-		L.foto
-		from Login L where usuario = 'martinez' and contrasena = '12345';
 
 -- ----- Sin FK ----- --
 -- TipoEmpleado
@@ -191,7 +185,7 @@ Insert into Sucursales(nombreSucursal, direccionSucursal, apertura, cierre)
 			('Atanasio','Calz. Atanasio Tzul, Guatemala',"07:00","22:00");
 
 -- Login
-Insert into Login(usuario, contrasena, tipoUsuario) -- , foto)
+Insert into Login(usuario, contraseña, tipoUsuario) -- , foto)
 	values	('martinez','12345',true), -- ,load_file('ruta de imagen')),
 			('ejemplo','54321',true); -- ,load_file('ruta de imagen'));
 
