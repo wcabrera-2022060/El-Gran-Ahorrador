@@ -33,22 +33,40 @@
         <ul class="navbar-nav ml-auto">
           <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+            <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Tipo Empleado</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Address Book</a>
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Sucursales</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Components</a>
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Afiliados</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Método de pago</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Cupones</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Tipo de Producto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Inventario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Empleados</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Envío</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Proveedores</a>
           </li>
         </ul>
       </div>

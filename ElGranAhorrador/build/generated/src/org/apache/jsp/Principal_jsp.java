@@ -75,10 +75,10 @@ public final class Principal_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <ul class=\"navbar-nav ml-auto\">\r\n");
       out.write("          <div class=\"hori-selector\"><div class=\"left\"></div><div class=\"right\"></div></div>\r\n");
       out.write("          <li class=\"nav-item\">\r\n");
-      out.write("            <a class=\"nav-link\" href=\"javascript:void(0);\"><i class=\"fas fa-tachometer-alt\"></i>Dashboard</a>\r\n");
+      out.write("            <a class=\"nav-link\" href=\"javascript:void(0);\"><i class=\"fas fa-tachometer-alt\"></i>Usuarios</a>\r\n");
       out.write("          </li>\r\n");
       out.write("          <li class=\"nav-item active\">\r\n");
-      out.write("            <a class=\"nav-link\" href=\"javascript:void(0);\"><i class=\"far fa-address-book\"></i>Address Book</a>\r\n");
+      out.write("            <a class=\"nav-link\" href=\"javascript:void(0);\"><i class=\"far fa-address-book\"></i>Compras</a>\r\n");
       out.write("          </li>\r\n");
       out.write("          <li class=\"nav-item\">\r\n");
       out.write("            <a class=\"nav-link\" href=\"javascript:void(0);\"><i class=\"far fa-clone\"></i>Components</a>\r\n");
@@ -91,6 +91,9 @@ public final class Principal_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("          </li>\r\n");
       out.write("          <li class=\"nav-item\">\r\n");
       out.write("            <a class=\"nav-link\" href=\"javascript:void(0);\"><i class=\"far fa-copy\"></i>Documents</a>\r\n");
+      out.write("          </li>\r\n");
+      out.write("          <li class=\"nav-item\">\r\n");
+      out.write("            <a class=\"nav-link\" href=\"javascript:void(0);\"><i class=\"far fa-copy\"></i>asdasdasdasdasdasd</a>\r\n");
       out.write("          </li>\r\n");
       out.write("        </ul>\r\n");
       out.write("      </div>\r\n");
