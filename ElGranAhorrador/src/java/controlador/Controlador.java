@@ -6,18 +6,33 @@
 package controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Envio;
+import modelo.EnvioDAO;
+import modelo.Inventario;
+import modelo.InventarioDAO;
+import modelo.MetodoPago;
+import modelo.MetodoPagoDAO;
 
 /**
  *
  * @author user
  */
 public class Controlador extends HttpServlet {
-
+    /* Agreguen sus instancias*/
+    Inventario inventario = new Inventario();
+    InventarioDAO inventarioDao = new InventarioDAO();
+    int idInventario;
+    MetodoPago metodopago = new MetodoPago();
+    MetodoPagoDAO metodopagoDao = new MetodoPagoDAO();
+    int idMetodoPago;
+    Envio envio = new Envio();
+    EnvioDAO envioDao = new EnvioDAO(); 
+    int idEnvio;
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
    * methods.
@@ -29,18 +44,88 @@ public class Controlador extends HttpServlet {
    */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    response.setContentType("text/html;charset=UTF-8");
-    try (PrintWriter out = response.getWriter()) {
-      /* TODO output your page here. You may use following sample code. */
-      out.println("<!DOCTYPE html>");
-      out.println("<html>");
-      out.println("<head>");
-      out.println("<title>Servlet Controlador</title>");      
-      out.println("</head>");
-      out.println("<body>");
-      out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
-      out.println("</body>");
-      out.println("</html>");
+    /*Donde termine el else if agreguen otro y cambian el menu.equals("Aqui ponen su entidad") 
+      luego*/
+        String menu = request.getParameter("menu");
+        String accion = request.getParameter("accion");
+        if (menu.equals("Principal")) {
+            request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        }else if(menu.equals("Envio")){
+      switch(accion){
+        case "Listar":
+            /*Sustituir listaEnvios = envioDao.listarEnvio()  conforme su entidad*/
+          List listaEnvios = envioDao.listarEnvio();
+          /*Sustituir con sus entidades request.setAttribute("envios", listaEnvios); 
+          Se fijan bien los nombres que estan usando porque esos son los que se 
+          utilizan en la tabla*/
+          request.setAttribute("envios", listaEnvios);
+          break;
+          
+        case "Agregar":
+          
+          break;
+          
+        case "Editar":
+          
+          break;
+          
+        case "Actualizar":
+          
+          break;
+          
+        case "Eliminar":
+          
+          break;
+          
+      }
+      /*Sustitur con su archivo jsp osea su vista*/
+      request.getRequestDispatcher("Envio.jsp").forward(request, response);
+    }else if(menu.equals("Inventario")){
+        switch(accion){
+            case "Listar":
+                List listaInventarios = inventarioDao.listarInventario();
+                request.setAttribute("inventarios", listaInventarios);
+            break;
+        case "Agregar":
+          
+          break;
+          
+        case "Editar":
+          
+          break;
+          
+        case "Actualizar":
+          
+          break;
+          
+        case "Eliminar":
+          
+          break;
+        }
+        request.getRequestDispatcher("Inventario.jsp").forward(request, response);
+    }else if(menu.equals("MetodoPago")){
+        switch(accion){
+            case "Listar":
+                List listaMetodoPagos = metodopagoDao.listarMetodoPago();
+                request.setAttribute("metodopagos", listaMetodoPagos);
+            break;
+            case "Agregar":
+          
+            break;
+          
+            case "Editar":
+          
+            break;
+          
+            case "Actualizar":
+          
+            break;
+          
+            case "Eliminar":
+          
+            break;
+        }
+        request.getRequestDispatcher("MetodoPago.jsp").forward(request, response);
     }
   }
 
