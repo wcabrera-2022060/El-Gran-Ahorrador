@@ -72,7 +72,7 @@ public class Validar extends HttpServlet{
             String user = request.getParameter("txtUser"); //Capturamos el usuario y la contraseña
             String pass = request.getParameter("txtPass");
             login = loginDao.validarLogin(user, pass);
-            if (login.getUsario() != null) {
+            if (login.getUsuario() != null) {
                 request.setAttribute("login", login);
                 request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
             }else{

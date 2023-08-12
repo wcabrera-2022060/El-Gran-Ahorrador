@@ -5,7 +5,7 @@ import java.sql.Blob;
 
 public class Login {
     private int idLogin;
-    private String usario;
+    private String usuario;
     private String contrasena;
     private boolean tipoUsuario;
     private Blob foto;
@@ -13,9 +13,9 @@ public class Login {
     public Login() {
     }
 
-    public Login(int idLogin, String usario, String contrasena, boolean tipoUsuario, Blob foto) {
+    public Login(int idLogin, String usuario, String contrasena, boolean tipoUsuario, Blob foto) {
         this.idLogin = idLogin;
-        this.usario = usario;
+        this.usuario = usuario;
         this.contrasena = contrasena;
         this.tipoUsuario = tipoUsuario;
         this.foto = foto;
@@ -29,12 +29,12 @@ public class Login {
         this.idLogin = idLogin;
     }
 
-    public String getUsario() {
-        return usario;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setUsario(String usario) {
-        this.usario = usario;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getContrasena() {

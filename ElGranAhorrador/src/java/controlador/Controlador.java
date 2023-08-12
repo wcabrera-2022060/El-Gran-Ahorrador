@@ -6,17 +6,28 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Afiliado;
+import modelo.AfiliadoDAO;
+import modelo.Envio;
+import modelo.EnvioDAO;
 
 /**
  *
  * @author user
  */
 public class Controlador extends HttpServlet {
-
+    /* Agreguen sus instancias*/
+    Envio envio = new Envio();
+    EnvioDAO envioDao = new EnvioDAO(); 
+    Afiliado afiliado = new Afiliado();
+    AfiliadoDAO afiliadoDAO = new AfiliadoDAO();
+    
+    int idEnvio;
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
    * methods.
@@ -28,12 +39,60 @@ public class Controlador extends HttpServlet {
    */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    
+    /*Donde termine el else if agreguen otro y cambian el menu.equals("Aqui ponen su entidad") 
+      luego*/
         String menu = request.getParameter("menu");
-        String accion = request.getParameter("action");
+        String accion = request.getParameter("accion");
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        }else if(menu.equals("Envio")){
+      switch(accion){
+        case "Listar":
+            /*Sustituir listaEnvios = envioDao.listarEnvio()  conforme su entidad*/
+          List listaEnvios = envioDao.listarEnvio();
+          /*Sustituir con sus entidades request.setAttribute("envios", listaEnvios); 
+          Se fijan bien los nombres que estan usando porque esos son los que se 
+          utilizan en la tabla*/
+          request.setAttribute("envios", listaEnvios);
+          break;
+          
+        case "Agregar":
+          
+          break;
+          
+        case "Editar":
+          
+          break;
+          
+        case "Actualizar":
+          
+          break;
+          
+        case "Eliminar":
+          
+          break;
+          
+      }
+      /*Sustitur con su archivo jsp osea su vista*/
+      request.getRequestDispatcher("Envio.jsp").forward(request, response);
+    }else if(menu.equals("Afiliados")){
+        switch(accion){
+            case "Listar":
+              List listaEnvios = afiliadoDAO.listarAfiliado();
+              request.setAttribute("afiliados", listaEnvios);
+              break;
+            case "Agregar":
+              break;
+            case "Editar":
+              break;
+            case "Actualizar":
+              break;
+            case "Eliminar":
+              break;
         }
+        request.getRequestDispatcher("Afiliado.jsp").forward(request, response);
+    }
+    
   }
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
