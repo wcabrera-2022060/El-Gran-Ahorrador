@@ -1,4 +1,4 @@
-package modelos;
+package modelo;
 
 import config.Conexion;
 import java.sql.Connection;
@@ -14,7 +14,7 @@ public class ProductoDAO {
     ResultSet rs;
     int resp;
     
-    public List Productos(){
+    public List ListarProductos(){
         String sql = "Select * from Productos";
         List<Productos> listaProductos = new ArrayList();
         try {
