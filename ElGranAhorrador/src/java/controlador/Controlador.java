@@ -6,18 +6,29 @@
 package controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Envio;
+import modelo.EnvioDAO;
+import modelo.TipoProducto;
+import modelo.TipoProductoDAO;
 
 /**
  *
  * @author user
  */
 public class Controlador extends HttpServlet {
-
+    /* Agreguen sus instancias*/
+    Envio envio = new Envio();
+    EnvioDAO envioDao = new EnvioDAO(); 
+    int idEnvio;
+    
+    TipoProducto tipoProducto = new TipoProducto();
+    TipoProductoDAO tipoProductoDao = new TipoProductoDAO();
+    int idProducto;
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
    * methods.
@@ -29,19 +40,64 @@ public class Controlador extends HttpServlet {
    */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    response.setContentType("text/html;charset=UTF-8");
-    try (PrintWriter out = response.getWriter()) {
-      /* TODO output your page here. You may use following sample code. */
-      out.println("<!DOCTYPE html>");
-      out.println("<html>");
-      out.println("<head>");
-      out.println("<title>Servlet Controlador</title>");      
-      out.println("</head>");
-      out.println("<body>");
-      out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
-      out.println("</body>");
-      out.println("</html>");
+    /*Donde termine el else if agreguen otro y cambian el menu.equals("Aqui ponen su entidad") 
+      luego*/
+        String menu = request.getParameter("menu");
+        String accion = request.getParameter("accion");
+        if (menu.equals("Principal")) {
+            request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        }else if(menu.equals("Envio")){
+      switch(accion){
+        case "Listar":
+            /*Sustituir listaEnvios = envioDao.listarEnvio()  conforme su entidad*/
+          List listaEnvios = envioDao.listarEnvio();
+          /*Sustituir con sus entidades request.setAttribute("envios", listaEnvios); 
+          Se fijan bien los nombres que estan usando porque esos son los que se 
+          utilizan en la tabla*/
+          request.setAttribute("envios", listaEnvios);
+          break;
+          
+        case "Agregar":
+          
+          break;
+          
+        case "Editar":
+          
+          break;
+          
+        case "Actualizar":
+          
+          break;
+          
+        case "Eliminar":
+          
+          break;
+          
+      }
+      /*Sustitur con su archivo jsp osea su vista*/
+      request.getRequestDispatcher("Envio.jsp").forward(request, response);
+    }else if(menu.equals("TipoProducto")){
+        switch(accion){
+            case "Listar":
+                List listaTipoProductos = tipoProductoDao.listarTipoProducto();
+                request.setAttribute("tipoProductos", listaTipoProductos);
+                break;
+                case "Agregar":
+          
+          break;   
+        case "Editar":
+          
+          break;
+        case "Actualizar":
+          
+          break;
+        case "Eliminar":
+          
+          break;
+        }
+        request.getRequestDispatcher("TipoProducto.jsp").forward(request, response);
     }
+    
   }
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
