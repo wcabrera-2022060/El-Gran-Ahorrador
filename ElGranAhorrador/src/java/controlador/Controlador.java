@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Envio;
+import modelo.EnvioDAO;
 import modelo.ProductoDAO;
 import modelo.Productos;
 
@@ -20,8 +22,11 @@ import modelo.Productos;
  */
 public class Controlador extends HttpServlet {
     /* Agreguen sus instancias*/
-    Productos producto = new Productos();
-    ProductoDAO productoDao = new ProductoDAO(); 
+    Envio envio = new Envio();
+    EnvioDAO envioDao = new EnvioDAO(); 
+    int idEnvio;
+    Productos productos = new Productos();
+    ProductoDAO productoDao = new ProductoDAO();
     int idProducto;
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,15 +45,15 @@ public class Controlador extends HttpServlet {
         String accion = request.getParameter("accion");
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
-        }else if(menu.equals("Productos")){
+        }else if(menu.equals("Envio")){
       switch(accion){
         case "Listar":
             /*Sustituir listaEnvios = envioDao.listarEnvio()  conforme su entidad*/
-          List listaProductos = productoDao.ListarProductos();
+          List listaEnvios = envioDao.listarEnvio();
           /*Sustituir con sus entidades request.setAttribute("envios", listaEnvios); 
           Se fijan bien los nombres que estan usando porque esos son los que se 
           utilizan en la tabla*/
-          request.setAttribute("productos", listaProductos);
+          request.setAttribute("envios", listaEnvios);
           break;
           
         case "Agregar":
@@ -69,6 +74,31 @@ public class Controlador extends HttpServlet {
           
       }
       /*Sustitur con su archivo jsp osea su vista*/
+      request.getRequestDispatcher("Envio.jsp").forward(request, response);
+    }else if(menu.equals("Producto")){
+              switch(accion){
+        case "Listar":
+          List listaProductos = productoDao.ListarProductos();
+          request.setAttribute("productos", listaProductos);
+          break;
+          
+        case "Agregar":
+          
+          break;
+          
+        case "Editar":
+          
+          break;
+          
+        case "Actualizar":
+          
+          break;
+          
+        case "Eliminar":
+          
+          break;
+          
+      }
       request.getRequestDispatcher("Producto.jsp").forward(request, response);
     }
     

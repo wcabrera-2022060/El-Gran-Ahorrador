@@ -61,13 +61,13 @@
                         <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Empleados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Clientes</a>
+                        <a class="nav-link" href="Controlador?menu=Cliente&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Clientes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=Envio&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Envío</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Productos</a>
+                        <a class="nav-link" href="Controlador?menu=Producto&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Productos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Proveedores</a>
