@@ -37,16 +37,16 @@ public class ClienteDAO {
         return cliente;
     }
     
-    public List listar(){
-        String sql = "Select"
-                + "C.idCliente,"
-                + "C.nombreCliente,"
-                + "C.apellidoCliente,"
-                + "C.telefonoCliente,"
-                + "C.direccionCliente,"
-                + "C.idLogin, "
-                + "C.idAfiliado"
-                + "from Clientes C";
+    public List listarCliente(){
+        String sql = "Select C.idCliente,\n" +
+"	C.nombreCliente,\n" +
+"	C.apellidoCliente,\n" +
+"	C.telefonoCliente,\n" +
+"	C.direccionCliente,\n" +
+"	C.idLogin, \n" +
+"	C.idAfiliado\n" +
+"	from Clientes C";
+        /*String sql = "Select * from Clientes";*/
         List<Cliente> listaClientes = new ArrayList<>();
         try{
             con = cn.Conexion();
