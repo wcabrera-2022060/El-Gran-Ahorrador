@@ -40,7 +40,7 @@ public class SucursalDAO {
   //Listar Sucursal
   
   public List listar(){
-    String sql = "select * from Sucursal";
+    String sql = "select * from Sucursales";
     List<Sucursal> listaSucursal = new ArrayList<>();
     try{
       con = cn.Conexion();
@@ -51,7 +51,8 @@ public class SucursalDAO {
         su.setIdSucursal(rs.getInt(1));
         su.setNombreSucursal(rs.getString(2));
         su.setDireccionSucursal(rs.getString(3));
-        
+        su.setApertura(rs.getTime(4));
+        su.setCierre(rs.getTime(5));
         listaSucursal.add(su);
       }
     }catch(Exception e){
