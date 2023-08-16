@@ -14,15 +14,15 @@ public class ProductoDAO {
     ResultSet rs;
     int resp;
     
-    public List ListarProductos(){
+    public List listarProductos(){
         String sql = "Select * from Productos";
-        List<Productos> listaProductos = new ArrayList();
+        List<Producto> listaProductos = new ArrayList();
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                Productos pr = new Productos();
+                Producto pr = new Producto();
                 pr.setIdProducto(rs.getInt(1));
                 pr.setNombreProducto(rs.getString(2));
                 pr.setPrecioProducto(rs.getDouble(3));
@@ -38,7 +38,7 @@ public class ProductoDAO {
         return listaProductos;
     }
     
-    public int agregar(Productos pr){
+    public int agregar(Producto pr){
         String sql = "Insert into Productos(nombreProducto,precioProducto,marca,fechaVencimiento,idTipoProducto,idInventario)\n" +
                 "Values (?,?,?,?,?,?)";
         try {
@@ -56,8 +56,8 @@ public class ProductoDAO {
         return resp;
     }
     
-    public Productos listaCodigoProducto(int id){
-        Productos pr = new Productos();
+    public Producto listaCodigoProducto(int id){
+        Producto pr = new Producto();
         String sql = "Select*from where idProducto =" + id;
         try {
             con = cn.Conexion();
@@ -77,7 +77,7 @@ public class ProductoDAO {
         return pr;
     }
     
-    public int actualizar(Productos pr){
+    public int actualizar(Producto pr){
         String sql = "Update Productos"
                 + "nombreProducto = ?"
                 + "precioProducto = ?"

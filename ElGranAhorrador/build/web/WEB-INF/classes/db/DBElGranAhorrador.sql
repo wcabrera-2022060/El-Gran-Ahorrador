@@ -252,4 +252,3 @@ Insert into Compra(cantidadProducto, idEmpleado, idCliente, idProducto)
 Insert into Factura(fecha, idCompra, idEnvio, idMetodoPago, idCupon)
 	values	('2023-07-05',1,1,1,1),
 			('2023-07-08',2,2,2,1);
-            

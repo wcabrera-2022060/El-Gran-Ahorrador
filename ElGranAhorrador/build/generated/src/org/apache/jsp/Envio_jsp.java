@@ -11,20 +11,10 @@ public final class Envio_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
-
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
-  }
-
-  public void _jspInit() {
-    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-  }
-
-  public void _jspDestroy() {
-    _jspx_tagPool_c_forEach_var_items.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -62,75 +52,86 @@ public final class Envio_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        ");
       out.write("\n");
       out.write("        <title>Vista Envío</title>\n");
-      out.write("        ");
-      out.write("\n");
-      out.write("        <link rel=\"stylesheet\" href=\"./css/styles.css\">\n");
-      out.write("\n");
-      out.write("        ");
-      out.write("\n");
-      out.write("        <script\n");
-      out.write("            src=\"https://code.jquery.com/jquery-3.7.0.slim.min.js\"\n");
-      out.write("            integrity=\"sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=\"\n");
-      out.write("        crossorigin=\"anonymous\"></script>\n");
-      out.write("\n");
-      out.write("        ");
-      out.write("\n");
-      out.write("        <script src=\"./js/animacionBoton.js\" defer></script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("\n");
+      out.write("    <nav class=\"navbar navbar-expand-lg bg-dark\">\n");
+      out.write("        <div class=\"container-fluid\">\n");
+      out.write("            <a class=\"navbar-brand\" href=\"#\">\n");
+      out.write("                <img src=\"https://img.icons8.com/nolan/48/warning-shield.png\" width=\"30\" class=\"logo\"/>\n");
+      out.write("            </a>\n");
+      out.write("            <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\" aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n");
+      out.write("                <span class=\"navbar-toggler-icon\"></span>\n");
+      out.write("            </button>\n");
+      out.write("            <div class=\"collapse navbar-collapse\" id=\"navbarNavAltMarkup\">\n");
+      out.write("                <div class=\"navbar-nav ml-auto\">\n");
+      out.write("                    <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">Inicio</a>\n");
+      out.write("                    <a class=\"nav-link\" href=\"#\">Sobre Nosotros</a>\n");
+      out.write("                    <a class=\"nav-link\" href=\"#\">Meet</a>\n");
+      out.write("                    <a class=\"nav-link\" href=\"#\">Settings</a>\n");
+      out.write("                    <div class=\"dropdown\">\n");
+      out.write("                        <button style=\"border: none\" class=\"btn btn-outline-light dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n");
+      out.write("                            ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getNombresEmpleado()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("\n");
-      out.write("        <div class=\"card-body\">\n");
-      out.write("            ");
+      out.write("                        </button>\n");
+      out.write("                        <div class=\"dropdown-menu text-center\" aria-labellebdy=\"dropdownMenuButton\">\n");
+      out.write("                            <a class=\"dropdown-item\" href=\"#\">\n");
+      out.write("                                <img src=\"img/UsuarioImagen.png\" alt=\"60\" width=\"60\"/>\n");
+      out.write("                            </a>\n");
+      out.write("                            <a class=\"dropdown-item\" href=\"#\" >");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getUsuario()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</a>\n");
+      out.write("                            <a class=\"dropdown-item\" href=\"#\" >");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getUsuario()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("@gmail.com</a>\n");
+      out.write("                            <div class=\"dropdown-divider\"></div>\n");
+      out.write("                            <form action=\"Validar\" method=\"POST\">\n");
+      out.write("                                <button name=\"accion\" name=\"Salir\" class=\"dropdown-item\" href=\"#\">Salir</button>\n");
+      out.write("                            </form>\n");
+      out.write("                        </div>             \n");
+      out.write("                    </div>\n");
       out.write("\n");
-      out.write("            <h1 class=\"form-group text-center\">Envío</h1>\n");
-      out.write("            <form>\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("    </nav>\n");
+      out.write("\n");
+      out.write("            <div class=\"card-body\">\n");
       out.write("                ");
       out.write("\n");
-      out.write("                <div class=\"form-group\">\n");
+      out.write("                <h1 class=\"form-group text-center\">Envío</h1>\n");
+      out.write("                <form>\n");
       out.write("                    ");
       out.write("\n");
-      out.write("                    <label>ID Envío:</label>\n");
-      out.write("                    <input type=\"text\" value=\"\" name=\"\" class=\"form-control\">\n");
-      out.write("                </div>\n");
-      out.write("                ");
+      out.write("                    <div class=\"form-group\">\n");
+      out.write("                    ");
       out.write("\n");
-      out.write("                <div class=\"form-group\">\n");
-      out.write("                    <label>Direccion del Envio:</label>\n");
-      out.write("                    <input type=\"text\" value=\"\" name=\"\" class=\"form-control\">\n");
-      out.write("                </div>\n");
-      out.write("                <div class=\"form-group\">\n");
-      out.write("                    <label>Teléfono Contacto:</label>\n");
-      out.write("                    <input type=\"text\" value=\"\" name=\"\" class=\"form-control\">\n");
-      out.write("                </div>\n");
-      out.write("                <div class=\"form-group\">\n");
-      out.write("                    <label>ID Empleado:</label>\n");
-      out.write("                    <input type=\"text\" value=\"\" name=\"\" class=\"form-control\">\n");
-      out.write("                </div>\n");
-      out.write("                <div>\n");
+      out.write("                        <label>ID Envío:</label>\n");
+      out.write("                        <input type=\"text\" value=\"\" name=\"\" class=\"form-control\">\n");
+      out.write("                    </div>\n");
+      out.write("                    ");
+      out.write("\n");
+      out.write("                    <div class=\"form-group\">\n");
+      out.write("                        <label>Direccion del Envio:</label>\n");
+      out.write("                        <input type=\"text\" value=\"\" name=\"\" class=\"form-control\">\n");
+      out.write("                    </div>\n");
+      out.write("                    <div class=\"form-group\">\n");
+      out.write("                        <label>Teléfono Contacto:</label>\n");
+      out.write("                        <input type=\"text\" value=\"\" name=\"\" class=\"form-control\">\n");
+      out.write("                    </div>\n");
+      out.write("                    <div class=\"form-group\">\n");
+      out.write("                        <label>ID Empleado:</label>\n");
+      out.write("                        <input type=\"text\" value=\"\" name=\"\" class=\"form-control\">\n");
+      out.write("                    </div>\n");
+      out.write("                    <div>\n");
       out.write("                    <input type=\"submit\" name=\"accion\" value=\"Agregar\" class=\"btn\" style=\"background-color: #1E56A0;\">\n");
       out.write("                    <input type=\"submit\" name=\"accion\" value=\"Actualizar\" class=\"btn btn-success\">\n");
-      out.write("                </div>\n");
-      out.write("            </form>\n");
+      out.write("                    <input type=\"submit\" name=\"accion\" value=\"Ver Tabla\" class=\"btn btn-success\">\n");
+      out.write("                    </div>\n");
+      out.write("                </form>\n");
+      out.write("            </div>\n");
       out.write("        </div>\n");
-      out.write("                      \n");
-      out.write("\n");
-      out.write("            <table class=\"table table-hover\">\n");
-      out.write("                <thead>\n");
-      out.write("                <th>ID ENVÍO</th>\n");
-      out.write("                <th>DIRECCIÓN ENVÍO</th>\n");
-      out.write("                <th>TELÉFONO CONTACTO</th>\n");
-      out.write("                <th>ID EMPLEADO</th>\n");
-      out.write("                <th>ACCIONES</th>\n");
-      out.write("                </thead>\n");
-      out.write("                <tbody>\n");
-      out.write("                ");
-      if (_jspx_meth_c_forEach_0(_jspx_page_context))
-        return;
-      out.write("        \n");
-      out.write("                </tbody>\n");
-      out.write("            </table>\n");
-      out.write("       \n");
       out.write("\n");
       out.write("\n");
       out.write("        <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" integrity=\"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj\" crossorigin=\"anonymous\"></script>\n");
@@ -149,59 +150,5 @@ public final class Envio_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
-  }
-
-  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
-    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setVar("envio");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${envios}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
-    try {
-      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
-      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-        do {
-          out.write("\n");
-          out.write("                    <tr>\n");
-          out.write("                        <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${envio.getIdEnvio()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                        <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${envio.getDireccionEnvio()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                        <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${envio.getTelefonoContacto()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                        <td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${envio.getIdEmpleado()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</td>\n");
-          out.write("                        <td>\n");
-          out.write("                            <a class=\"btn btn-warning\" href=\"#\">Editar</a>\n");
-          out.write("                            <a class=\"btn btn-danger\" href=\"#\">Eliminar</a>\n");
-          out.write("                        </td>\n");
-          out.write("                    </tr>\n");
-          out.write("                ");
-          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
-          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-            break;
-        } while (true);
-      }
-      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_c_forEach_0.doFinally();
-      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_0);
-    }
-    return false;
   }
 }

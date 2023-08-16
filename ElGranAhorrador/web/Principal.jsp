@@ -30,35 +30,35 @@
                 <i class="fas fa-bars text-white"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <ul class="navbar-nav ml-auto navbar-nav-scroll">
+                    
                     <li class="nav-item active">
                         <a class="nav-link" href="Principal.jsp"><i class="far fa-copy"></i>Home</a>
                     </li>
                     <%--Cambiar el href como esta en la entidad de envio, con base a su archivo sp y su entidad, y colocar el target--%>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Tipo Empleado</a>
+                        <a class="nav-link" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Tipo Empleado</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Sucursales</a>
+                        <a class="nav-link" href="Controlador?menu=Sucursal&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Sucursales</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Afiliados</a>
+                        <a class="nav-link" href="Controlador?menu=Afiliado&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Afiliados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Método de pago</a>
+                        <a class="nav-link" href="Controlador?menu=MetodoPago&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Método de pago</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Cupones</a>
+                        <a class="nav-link" href="Controlador?menu=Cupon&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Cupones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Tipo de Producto</a>
+                        <a class="nav-link" href="Controlador?menu=TipoProducto&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Tipo de Producto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Inventario</a>
+                        <a class="nav-link" href="Controlador?menu=Inventario&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Inventario</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Empleados</a>
+                        <a class="nav-link" href="Controlador?menu=Empleado&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Empleados</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=Cliente&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Clientes</a>
@@ -70,7 +70,14 @@
                         <a class="nav-link" href="Controlador?menu=Producto&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Proveedores</a>
+                        <a class="nav-link" href="Controlador?menu=Proveedor&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Proveedores</a>
+                    </li>
+                    <%-- Estás entidades después serán trasladadas al carrito de compras --%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?menu=Factura&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Factura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?menu=Compra&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Compra</a>
                     </li>
                 </ul>
             </div>
@@ -80,20 +87,20 @@
                 </button>
                 <div class="dropdown-menu text-center dropdown-menu-edit" aria-labellebdy="dropdownMenuButton">
                     <a class="dropdown-item" href="#">
-                        <img src="img/UsuarioImagen.png" alt="60" width="60"/>
+                        <img src="img/usuario.jpg" alt="60" width="60"/>
                     </a>
                     <a class="dropdown-item" href="#" >${login.getUsuario()}</a>
                     <a class="dropdown-item" href="#" >${login.getUsuario()}@gmail.com</a>
                     <div class="dropdown-divider"></div>
                     <form action="Validar" method="POST">
-                        <button name="accion" name="Salir" class="dropdown-item" href="#">Salir</button>
+                        <button name="accion" name="Salir" class="dropdown-item" href="index.jsp">Salir</button>
                     </form>
                 </div>
             </div>
         </nav>
 
 
-        <div class="m-4" style="height: 800px">
+        <div class="m-4" style="height: 1200px">
             <iframe name="myFrame" style="height: 100%; width: 100%; border:none"></iframe>
         </div>
 
