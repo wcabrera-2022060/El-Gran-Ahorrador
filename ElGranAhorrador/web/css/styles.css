@@ -1,124 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-
-
-
-/*Botones*/
-.button,
-.button::before,
-.button::after,
-.button span,
-.button span::before,
-.button span::after
-{
-  transition: all ease .5s;
-}
-
-.button{
-  position: relative;
-  display: inline-block;
-  padding: 0.3em;
-  margin: 1em;
-  border: solid 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.botones{
-    display: flex;
-    justify-content: center;
-}
-
-.button:hover
-{
-  box-shadow: 0 0 5em .5em rgba(50,50,150,0.5);
-}
-
-.button span
-{
-  display: inline-block;
-  width: 100%;
-  padding: 0.6em 2em;
-}
-
-.button::before,
-.button::after,
-.button span::before,
-.button span::after
-{
-  content: '';
-  position: absolute;
-  border: 1px;
-}
-
-.button::before,
-.button span::before
-{
-  border-style: solid none;  
-}
-
-.button::before,
-.button span::after{      
-  left: 0;
-  top: -0.4em;
-  width: 100%; 
-  height: calc(100% + 0.8em);
-}
-
-.button::after,
-.button span::after
-{
-  border-style: none solid;   
-}
-
-.button::after,
-.button span::before
-{
-  top: 0;
-  left: -0.4em;
-  height: 100%;
-  width: calc(100% + 0.8em); 
-}
-
-.button:hover::after,
-.button:hover span::after
-{
-  transform: scaleY(0);
-}
-
-.button:hover::before,
-.button:hover span::before
-{
-  transform: scaleX(0);
-}
-
-.button:hover span::after,
-.button:hover span::before
-{
-  opacity: 0;
-}
-
-.button-eliminar:hover span{
-    background-color: #F44336;
-    color: #fff;
-}
-
-.button-editar:hover span{
-    background-color: #1E56A0;
-    color: #fff;
-}
-
-.button-agregar:hover span{
-    background-color: #DDFF33;
-    color: #fff;
-}
-
-.button-actualizar:hover span{
-    background-color: #4CAF50;
-    color: #fff;
-}
-/*--------------------------------*/
-.body{
+body{
   font-family: 'Roboto', sans-serif;
   background-color: #F6F6F6;
 }
@@ -147,7 +29,7 @@ i {
   margin: 0px;
 }
 #navbarSupportedContent ul li a i{
-  margin-right: 10px;
+  margin-right: 0px;
 }
 #navbarSupportedContent li {
   list-style-type: none;
@@ -159,14 +41,13 @@ i {
   font-size: 15px;
   display: block;
   padding: 20px 20px;
-  transition-duration:0.6s;
-  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition-duration: 1s;
+  transition-timing-function: linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
   position: relative;
 }
 #navbarSupportedContent>ul>li.active>a{
   color: #5161ce;
-  background-color: transparent;
-  transition: all 0.7s;
+  background-color: #fff;
 }
 #navbarSupportedContent a:not(:only-child):after {
   content: "\f105";
@@ -185,17 +66,16 @@ i {
   transform: rotate(90deg);
 }
 .hori-selector{
-  display:inline-block;
-  position:absolute;
+  display: none;
+  display: inline-block;
+  position: relative;
   height: 100%;
   top: 0px;
   left: 0px;
-  transition-duration:0.6s;
-  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   background-color: #fff;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 .hori-selector .right,
 .hori-selector .left{
@@ -203,7 +83,7 @@ i {
   width: 25px;
   height: 25px;
   background-color: #fff;
-  bottom: 10px;
+  bottom: 0px;
 }
 .hori-selector .right{
   right: -25px;
@@ -222,22 +102,21 @@ i {
 }
 .hori-selector .right:before{
   bottom: 0;
-  right: -25px;
+  right: -25px; 
 }
 .hori-selector .left:before{
   bottom: 0;
   left: -25px;
 }
 
-/*prueba*/
 .navbar-nav{
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .navbar-nav li{
-    flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @media(min-width: 992px){
@@ -305,4 +184,116 @@ i {
   left: -122px;
 }
 
+.button,
+.button::before,
+.button::after,
+.button span,
+.button span::before,
+.button span::after
+{
+  transition: all ease .5s;
+}
 
+.button{
+  position: relative;
+  display: inline-block;
+  padding: 0.3em;
+  margin: 1em;
+  border: solid 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.botones{
+    display: flex;
+    justify-content: center;
+}
+
+.button:hover
+{
+  box-shadow: 0 0 5em .5em rgba(50,50,150,0.5);
+}
+
+.button span
+{
+  display: inline-block;
+  width: 100%;
+  padding: 0.6em 2em;
+}
+
+.button::before,
+.button::after,
+.button span::before,
+.button span::after
+{
+  content: '';
+  position: absolute;
+  border: 1px;
+}
+
+.button::before,
+.button span::before
+{
+  border-style: solid none;
+}
+
+.button::before,
+.button span::after{
+  left: 0;
+  top: -0.4em;
+  width: 100%; 
+  height: calc(100% + 0.8em);
+}
+
+.button::after,
+.button span::after
+{
+  border-style: none solid;
+}
+
+.button::after,
+.button span::before
+{
+  top: 0;
+  left: -0.4em;
+  height: 100%;
+  width: calc(100% + 0.8em); 
+}
+
+.button:hover::after,
+.button:hover span::after
+{
+  transform: scaleY(0);
+}
+
+.button:hover::before,
+.button:hover span::before
+{
+  transform: scaleX(0);
+}
+
+.button:hover span::after,
+.button:hover span::before
+{
+  opacity: 0;
+}
+
+.button-eliminar:hover span{
+    background-color: #F44336;
+    color: #fff;
+}
+
+.button-editar:hover span{
+    background-color: #1E56A0;
+    color: #fff;
+}
+
+.button-agregar:hover span{
+    background-color: #DDFF33;
+    color: #fff;
+}
+
+.button-actualizar:hover span{
+    background-color: #4CAF50;
+    color: #fff;
+}
