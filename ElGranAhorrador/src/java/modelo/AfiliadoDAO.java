@@ -19,7 +19,12 @@ public class AfiliadoDAO {
     String sql;
     
     public List listarAfiliado(){
-        sql = "select * from Afiliado";
+        sql = "select A.idAfiliado, \n" +
+                "A.rangoAfiliado, \n" +
+                "A.beneficios, \n" +
+                "A.precioRango, \n" +
+                "A.fechaExpiracion\n" +
+                    "from Afiliado A";
         List<Afiliado> listaAfiliado = new ArrayList<>();
         try {
             con = cn.Conexion();

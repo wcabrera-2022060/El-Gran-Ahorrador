@@ -10,7 +10,7 @@ public class Conexion {
   public Connection Conexion() {
     try {
       Class.forName("com.mysql.jdbc.Driver");
-      conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBElGranAhorrador?useSSL=false", "root", "password");
+      conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBElGranAhorrador?useSSL=false", "kinalv", "kinalv");
     } catch (Exception e) {
       e.printStackTrace();
     }
