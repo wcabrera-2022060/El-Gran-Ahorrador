@@ -6,16 +6,23 @@
 package controlador;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.TipoEmpleado;
+import modelo.TipoEmpleadoDAO;
 
 /**
  *
  * @author user
  */
 public class Controlador extends HttpServlet {
+
+  TipoEmpleado tipoEmpleado = new TipoEmpleado();
+  TipoEmpleadoDAO tipoEmpleadoDao = new TipoEmpleadoDAO();
+  int idTipoEmpleado;
 
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,12 +35,35 @@ public class Controlador extends HttpServlet {
    */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    
-        String menu = request.getParameter("menu");
-        String accion = request.getParameter("action");
-        if (menu.equals("Principal")) {
-            request.getRequestDispatcher("Principal.jsp").forward(request, response);
-        }
+
+    String menu = request.getParameter("menu");
+    String accion = request.getParameter("accion");
+
+    if (menu.equals("Principal")) {
+      request.getRequestDispatcher("Principal.jsp").forward(request, response);
+    } else if (menu.equals("TipoEmpleado")) {
+      switch (accion) {
+        case "Listar":
+          List listaTipoEmpleados = tipoEmpleadoDao.listar();
+          request.setAttribute("TipoEmpleados", listaTipoEmpleados);
+
+          break;
+        case "Agregar":
+
+          break;
+        case "Editar":
+
+          break;
+        case "Actualizar":
+
+          break;
+        case "Eliminar":
+
+          break;
+      }
+      
+      request.getRequestDispatcher("TipoEmpleado.jsp").forward(request, response);
+    }
   }
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

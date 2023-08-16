@@ -30,12 +30,11 @@
         <i class="fas fa-bars text-white"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Tipo Empleado</a>
-          </li>
+        <ul class="navbar-nav ml-auto navbar-nav-scroll">
           <li class="nav-item active">
+            <a class="nav-link" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame"><i class="fas fa-tachometer-alt"></i>Tipo Empleado</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Sucursales</a>
           </li>
           <li class="nav-item">
