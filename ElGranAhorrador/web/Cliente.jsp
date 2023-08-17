@@ -1,9 +1,8 @@
 <%-- 
-    Document   : Factura
-    Created on : 11/08/2023, 10:27:27 PM
-    Author     : Marco
+    Document   : Cliente
+    Created on : 11/08/2023, 05:45:14 PM
+    Author     : Edson_Alf
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <%--Cambiar Nombre a su entidad osea donde dice Vista Envio--%>
-        <title>Vista Factura</title>
+        <title>Vista Cliente</title>
         <%-- Link hacia el CSS --%>
         <link rel="stylesheet" href="./css/styles.css">
 
@@ -30,33 +29,40 @@
 
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Factura</h1>
+            <h1 class="form-group text-center">Cliente</h1>
             <form>
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
-                    <label>ID Factura</label>
+                    <label>ID Cliente:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
-                    <label>Fecha</label>
+                    <label>Nombre Cliente:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>ID Compra</label>
+                    <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
+                    <label>Apellido Cliente:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>ID Envio</label>
+                    <label>Teléfono Cliente:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>ID Metodo Pago</label>
+                    <label>Direccion Cliente:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>ID Cupon</label>
+                    <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
+                    <label>ID Login:</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
+                    <label>ID Afiliado:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="botones">
@@ -69,22 +75,25 @@
 
         <table class="table table-hover">
             <thead>
-            <th>ID Factura</th>
-            <th>FECHA</th>
-            <th>ID COMPRA</th>
-            <th>ID ENVIO</th>
-            <th>ID METODO PAGO</th>
-            <th>ID CUPON</th>
+            <th>ID CLIENTE</th>
+            <th>NOMBRE CLIENTE</th>
+            <th>APELLIDO CLIENTE</th>
+            <th>TELÉFONO CLIENTE</th>
+            <th>DIRECCIÓN CLIENTE</th>
+            <th>ID LOGIN</th>
+            <th>ID AFILIADO</th>
+            <th>ACCIONES</th>
         </thead>
         <tbody>
-            <c:forEach var="factura" items="${facturas}">
+            <c:forEach var="cliente" items="${clientes}">
                 <tr>
-                    <td>${factura.getIdFactura()}</td>
-                    <td>${factura.getFecha()}</td>
-                    <td>${factura.getIdCompra()}</td>
-                    <td>${factura.getIdEnvio()}</td>
-                    <td>${factura.getIdMetodoPago()}</td>
-                    <td>${factura.getIdCupon()}</td>
+                    <td>${cliente.getIdCliente()}</td>                        
+                    <td>${cliente.getNombreCliente()}</td>
+                    <td>${cliente.getApellidoCliente()}</td>
+                    <td>${cliente.getTelefonoCliente()}</td>
+                    <td>${cliente.getDireccionCliente()}</td>
+                    <td>${cliente.getIdLogin()}</td>
+                    <td>${cliente.getIdAfiliado()}</td>
                     <td>
                         <div class="button button-editar" href="#"><span>Editar</span></div>
                         <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
