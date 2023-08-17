@@ -1,9 +1,8 @@
 <%-- 
-    Document   : Cupon
-    Created on : 11/08/2023, 07:47:23 AM
-    Author     : JJ
+    Document   : Compra
+    Created on : 10/08/2023, 01:39:35 AM
+    Author     : DELL
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <%--Cambiar Nombre a su entidad osea donde dice Vista Envio--%>
-        <title>Vista Cupón</title>
+
+        <title>Vista Compra</title>
         <%-- Link hacia el CSS --%>
         <link rel="stylesheet" href="./css/styles.css">
 
@@ -29,26 +28,30 @@
 
 
         <div class="card-body">
-            <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Cupón</h1>
+
+            <h1 class="form-group text-center">Compra</h1>
             <form>
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
-                    <label>ID Cupón:</label>
+                    <label>ID Compra:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
-                    <label>Fecha de Caducidad:</label>
+                    <label>Cantidad del Producto:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Descuento:</label>
+                    <label>ID Empleado:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Validez:</label>
+                    <label>ID Cliente:</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>ID Producto:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="botones">
@@ -61,19 +64,20 @@
 
         <table class="table table-hover">
             <thead>
-            <th>ID CUPÓN</th>
-            <th>FECHA CADUCIDAD</th>
-            <th>DESCUENTO</th>
-            <th>VALIDEZ</th>
-            <th>ACCIONES</th>
+            <th>ID COMPRA</th>
+            <th>CANTIDAD DEL PRODUCTO</th>
+            <th>ID EMPLEADO</th>
+            <th>ID CLIENTE</th>
+            <th>ID PRODUCTO</th>
         </thead>
         <tbody>
-            <c:forEach var="cupon" items="${cupones}">
+            <c:forEach var="compra" items="${compras}">
                 <tr>
-                    <td>${cupon.getIdCupon()}</td>
-                    <td>${cupon.getFechaCaducidad()}</td>
-                    <td>${cupon.getDescuento()}</td>
-                    <td>${cupon.getValidez()}</td>
+                    <td>${compra.getIdCompra()}</td>
+                    <td>${compra.getCantidadProducto()}</td>
+                    <td>${compra.getIdEmpleado()}</td>
+                    <td>${compra.getIdCliente()}</td>
+                    <td>${compra.getIdProducto()}</td>
                     <td>
                         <div class="button button-editar" href="#"><span>Editar</span></div>
                         <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
@@ -90,4 +94,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </body>
 </html>
-
