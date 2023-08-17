@@ -17,7 +17,8 @@ public class CompraDAO {
     int resp;
     
 public List listar(){
-    String sql = "select C.cantidadProducto , C.idEmpleado , C.idCliente , C.idProducto from Compra C";
+    //String sql = "select C.cantidadProducto , C.idEmpleado , C.idCliente , C.idProducto from Compra C";
+    String sql = "select * from Compra";
     List<Compra> listaCompra = new ArrayList<>();
     try{
          con = cn.Conexion();
