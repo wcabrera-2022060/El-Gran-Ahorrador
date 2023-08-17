@@ -1,8 +1,9 @@
 <%-- 
-    Document   : Envio
-    Created on : 10/08/2023, 01:39:35 AM
-    Author     : Mr Hermes Jr
+    Document   : Producto
+    Created on : 14/08/2023, 08:39:59 PM
+    Author     : yeric
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <%--Cambiar Nombre a su entidad osea donde dice Vista Envio--%>
-        <title>Vista Envío</title>
+        <title>Vista Productos</title>
         <%-- Link hacia el CSS --%>
         <link rel="stylesheet" href="./css/styles.css">
 
@@ -25,27 +26,44 @@
         <script src="./js/animacionBoton.js" defer></script>
     </head>
     <body>
+
+
         <div class="card-body">
-            <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Envío</h1>
+            <h1 class="form-group text-center">Productos</h1>
             <form>
-                <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
-                    <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
-                    <label>ID Envío:</label>
+                    <%--ID Producto--%>
+                    <label>ID Producto:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
-                <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
+                <%--Nombre Producto--%>
                 <div class="form-group">
-                    <label>Direccion del Envio:</label>
+                    <label>Nombre del Producto:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
+                <%--Precio del Producto:--%>
                 <div class="form-group">
-                    <label>Teléfono Contacto:</label>
+                    <label>Precio del Producto:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
+                <%--Marca:--%>
                 <div class="form-group">
-                    <label>ID Empleado:</label>
+                    <label>Marca:</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <%--Fecha de Vencimiento--%>
+                <div class="form-group">
+                    <label>Fecha de Vencimiento:</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <%--ID Tipo Producto--%>
+                <div class="form-group">
+                    <label>ID Tipo Producto:</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <%--ID Inventario--%>
+                <div class="form-group">
+                    <label>ID Inventario:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="botones">
@@ -58,19 +76,25 @@
 
         <table class="table table-hover">
             <thead>
-            <th>ID ENVÍO</th>
-            <th>DIRECCIÓN ENVÍO</th>
-            <th>TELÉFONO CONTACTO</th>
-            <th>ID EMPLEADO</th>
+            <th>ID Producto</th>
+            <th>Nombre del Producto</th>
+            <th>Precio del Producto</th>
+            <th>Marca</th>
+            <th>Fecha de Vencimiento</th>
+            <th>ID Tipo Producto</th>
+            <th>ID Inventario</th>
             <th>ACCIONES</th>
         </thead>
         <tbody>
-            <c:forEach var="envio" items="${envios}">
+            <c:forEach var="producto" items="${productos}">
                 <tr>
-                    <td>${envio.getIdEnvio()}</td>
-                    <td>${envio.getDireccionEnvio()}</td>
-                    <td>${envio.getTelefonoContacto()}</td>
-                    <td>${envio.getIdEmpleado()}</td>
+                    <td>${producto.getIdProducto()}</td>
+                    <td>${producto.getNombreProducto()}</td>
+                    <td>${producto.getPrecioProducto()}</td>
+                    <td>${producto.getMarca()}</td>
+                    <td>${producto.getFechaVencimiento()}</td>
+                    <td>${producto.getIdTipoProducto()}</td>
+                    <td>${producto.getIdInventario()}</td>
                     <td>
                         <div class="button button-editar" href="#"><span>Editar</span></div>
                         <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
@@ -87,3 +111,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </body>
 </html>
+
