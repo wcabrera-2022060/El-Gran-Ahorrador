@@ -1,7 +1,7 @@
 <%-- 
-    Document   : MetodoPago
-    Created on : 11/08/2023, 06:19:12 PM
-    Author     : JoseMario
+    Document   : Factura
+    Created on : 11/08/2023, 10:27:27 PM
+    Author     : Marco
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <%--Cambiar Nombre a su entidad osea donde dice Vista Envio--%>
-        <title>Vista MetodoPago</title>
+        <title>Vista Factura</title>
         <%-- Link hacia el CSS --%>
         <link rel="stylesheet" href="./css/styles.css">
 
@@ -30,25 +30,33 @@
 
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Método Pago</h1>
+            <h1 class="form-group text-center">Factura</h1>
             <form>
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
-                    <label>ID Método Pago</label>
+                    <label>ID Factura</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
-                    <label>Método Pago:</label>
+                    <label>Fecha</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Pago Total:</label>
+                    <label>ID Compra</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Banco:</label>
+                    <label>ID Envio</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>ID Metodo Pago</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>ID Cupon</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="botones">
@@ -61,19 +69,22 @@
 
         <table class="table table-hover">
             <thead>
-            <th>ID MÉTODO PAGO</th>
-            <th>MÉTODO PAGO</th>
-            <th>PAGO TOTAL</th>
-            <th>BANCO</th>
-            <th>ACCIONES</th>
+            <th>ID Factura</th>
+            <th>FECHA</th>
+            <th>ID COMPRA</th>
+            <th>ID ENVIO</th>
+            <th>ID METODO PAGO</th>
+            <th>ID CUPON</th>
         </thead>
         <tbody>
-            <c:forEach var="metodopago" items="${metodoPagos}">
+            <c:forEach var="factura" items="${facturas}">
                 <tr>
-                    <td>${metodopago.getIdMetodoPago()}</td>
-                    <td>${metodopago.getMetodoPago()}</td>
-                    <td>${metodopago.getPagoTotal()}</td>
-                    <td>${metodopago.getBanco()}</td>
+                    <td>${factura.getIdFactura()}</td>
+                    <td>${factura.getFecha()}</td>
+                    <td>${factura.getIdCompra()}</td>
+                    <td>${factura.getIdEnvio()}</td>
+                    <td>${factura.getIdMetodoPago()}</td>
+                    <td>${factura.getIdCupon()}</td>
                     <td>
                         <div class="button button-editar" href="#"><span>Editar</span></div>
                         <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
@@ -90,4 +101,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </body>
 </html>
-

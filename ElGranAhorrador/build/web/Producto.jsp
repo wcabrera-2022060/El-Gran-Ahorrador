@@ -1,7 +1,7 @@
 <%-- 
-    Document   : MetodoPago
-    Created on : 11/08/2023, 06:19:12 PM
-    Author     : JoseMario
+    Document   : Producto
+    Created on : 14/08/2023, 08:39:59 PM
+    Author     : yeric
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <%--Cambiar Nombre a su entidad osea donde dice Vista Envio--%>
-        <title>Vista MetodoPago</title>
+        <title>Vista Productos</title>
         <%-- Link hacia el CSS --%>
         <link rel="stylesheet" href="./css/styles.css">
 
@@ -29,26 +29,41 @@
 
 
         <div class="card-body">
-            <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Método Pago</h1>
+            <h1 class="form-group text-center">Productos</h1>
             <form>
-                <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
-                    <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
-                    <label>ID Método Pago</label>
+                    <%--ID Producto--%>
+                    <label>ID Producto:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
-                <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
+                <%--Nombre Producto--%>
                 <div class="form-group">
-                    <label>Método Pago:</label>
+                    <label>Nombre del Producto:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
+                <%--Precio del Producto:--%>
                 <div class="form-group">
-                    <label>Pago Total:</label>
+                    <label>Precio del Producto:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
+                <%--Marca:--%>
                 <div class="form-group">
-                    <label>Banco:</label>
+                    <label>Marca:</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <%--Fecha de Vencimiento--%>
+                <div class="form-group">
+                    <label>Fecha de Vencimiento:</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <%--ID Tipo Producto--%>
+                <div class="form-group">
+                    <label>ID Tipo Producto:</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <%--ID Inventario--%>
+                <div class="form-group">
+                    <label>ID Inventario:</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="botones">
@@ -61,19 +76,25 @@
 
         <table class="table table-hover">
             <thead>
-            <th>ID MÉTODO PAGO</th>
-            <th>MÉTODO PAGO</th>
-            <th>PAGO TOTAL</th>
-            <th>BANCO</th>
+            <th>ID Producto</th>
+            <th>Nombre del Producto</th>
+            <th>Precio del Producto</th>
+            <th>Marca</th>
+            <th>Fecha de Vencimiento</th>
+            <th>ID Tipo Producto</th>
+            <th>ID Inventario</th>
             <th>ACCIONES</th>
         </thead>
         <tbody>
-            <c:forEach var="metodopago" items="${metodoPagos}">
+            <c:forEach var="producto" items="${productos}">
                 <tr>
-                    <td>${metodopago.getIdMetodoPago()}</td>
-                    <td>${metodopago.getMetodoPago()}</td>
-                    <td>${metodopago.getPagoTotal()}</td>
-                    <td>${metodopago.getBanco()}</td>
+                    <td>${producto.getIdProducto()}</td>
+                    <td>${producto.getNombreProducto()}</td>
+                    <td>${producto.getPrecioProducto()}</td>
+                    <td>${producto.getMarca()}</td>
+                    <td>${producto.getFechaVencimiento()}</td>
+                    <td>${producto.getIdTipoProducto()}</td>
+                    <td>${producto.getIdInventario()}</td>
                     <td>
                         <div class="button button-editar" href="#"><span>Editar</span></div>
                         <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
