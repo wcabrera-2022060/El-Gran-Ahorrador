@@ -37,7 +37,7 @@
             </div>
             <input
               type="submit"
-              name="action"
+              name="accion"
               value="Ingresar"
               class="btn btn-primary btn-block"
               />

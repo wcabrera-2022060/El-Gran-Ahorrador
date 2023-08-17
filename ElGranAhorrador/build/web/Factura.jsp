@@ -1,8 +1,9 @@
 <%-- 
-    Document   : Sucursal
-    Created on : 14/08/2023, 11:17:39 PM
-    Author     : HP
+    Document   : Factura
+    Created on : 11/08/2023, 10:27:27 PM
+    Author     : Marco
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <%--Cambiar Nombre a su entidad osea donde dice Vista Envio--%>
-        <title>Vista Sucursal</title>
+        <title>Vista Factura</title>
         <%-- Link hacia el CSS --%>
         <link rel="stylesheet" href="./css/styles.css">
 
@@ -29,29 +30,33 @@
 
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Sucursal</h1>
+            <h1 class="form-group text-center">Factura</h1>
             <form>
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
-                    <label>ID Sucursal:</label>
+                    <label>ID Factura</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
-                    <label>Nombre Sucursal:</label>
+                    <label>Fecha</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Dirección Sucursal:</label>
+                    <label>ID Compra</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Apertura:</label>
+                    <label>ID Envio</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Cierre:</label>
+                    <label>ID Metodo Pago</label>
+                    <input type="text" value="" name="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>ID Cupon</label>
                     <input type="text" value="" name="" class="form-control">
                 </div>
                 <div class="botones">
@@ -64,21 +69,22 @@
 
         <table class="table table-hover">
             <thead>
-            <th>ID SUCURSAL</th>
-            <th>NOMBRE SUCURSAL</th>
-            <th>DIRECCIÓN SUCURSAL</th>
-            <th>APERTURA</th>
-            <th>CIERRE</th>
-            <th>ACCIONES</th>
+            <th>ID Factura</th>
+            <th>FECHA</th>
+            <th>ID COMPRA</th>
+            <th>ID ENVIO</th>
+            <th>ID METODO PAGO</th>
+            <th>ID CUPON</th>
         </thead>
         <tbody>
-            <c:forEach var="sucursal" items="${sucursales}">
+            <c:forEach var="factura" items="${facturas}">
                 <tr>
-                    <td>${sucursal.getIdSucursal()}</td>
-                    <td>${sucursal.getNombreSucursal()}</td>
-                    <td>${sucursal.getDireccionSucursal()}</td>
-                    <td>${sucursal.getApertura()}</td>
-                    <td>${sucursal.getCierre()}</td>
+                    <td>${factura.getIdFactura()}</td>
+                    <td>${factura.getFecha()}</td>
+                    <td>${factura.getIdCompra()}</td>
+                    <td>${factura.getIdEnvio()}</td>
+                    <td>${factura.getIdMetodoPago()}</td>
+                    <td>${factura.getIdCupon()}</td>
                     <td>
                         <div class="button button-editar" href="#"><span>Editar</span></div>
                         <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
