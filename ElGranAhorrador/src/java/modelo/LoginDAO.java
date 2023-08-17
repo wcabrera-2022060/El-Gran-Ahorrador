@@ -21,7 +21,7 @@ public class LoginDAO {
     public LoginDAO() {
     }
     
-    public Login validarLogin(String usario, String contrasena){
+    public Login validarLogin(String usuario, String contrasena){
         Login login = new Login();
         sql = "select L.idLogin, \n" +
                 "L.usuario, \n" +
@@ -32,12 +32,12 @@ public class LoginDAO {
         try{
            con = cn.Conexion();
            ps = con.prepareCall(sql);
-           ps.setString(1, usario);
+           ps.setString(1, usuario);
            ps.setString(2, contrasena);
            rs = ps.executeQuery();
             while (rs.next()) {
                 login.setIdLogin(rs.getInt(1));
-                login.setUsario(rs.getString(2));
+                login.setUsuario(rs.getString(2));
                 login.setContrasena(rs.getString(3));
                 login.setTipoUsuario(rs.getBoolean(4));
                 login.setFoto(rs.getBlob(5));
@@ -63,7 +63,7 @@ public class LoginDAO {
             while (rs.next()) {
                 Login lg = new Login();
                 lg.setIdLogin(rs.getInt(1));
-                lg.setUsario(rs.getString(2));
+                lg.setUsuario(rs.getString(2));
                 lg.setContrasena(rs.getString(3));
                 lg.setTipoUsuario(rs.getBoolean(4));
                 lg.setFoto(rs.getBlob(5));
@@ -81,7 +81,7 @@ public class LoginDAO {
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, log.getUsario());
+            ps.setString(1, log.getUsuario());
             ps.setString(2, log.getContrasena());
             ps.setBoolean(3, log.getTipoUsuario());
             ps.setBlob(4, log.getFoto());
@@ -106,7 +106,7 @@ public class LoginDAO {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {                
-                log.setUsario(rs.getString(2));
+                log.setUsuario(rs.getString(2));
                 log.setContrasena(rs.getString(3));
                 log.setTipoUsuario(rs.getBoolean(4));
                 log.setFoto(rs.getBlob(5));
@@ -127,7 +127,7 @@ public class LoginDAO {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, log.getUsario());
+            ps.setString(1, log.getUsuario());
             ps.setString(2, log.getContrasena());
             ps.setBoolean(3, log.getTipoUsuario());
             ps.setBlob(4, log.getFoto());
