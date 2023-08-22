@@ -30,45 +30,52 @@
 
         <div class="card-body">
             <h1 class="form-group text-center">Productos</h1>
-            <form>
+            <form action="Controlador?menu=Producto" method="POST">
                 <div class="form-group">
                     <%--ID Producto--%>
                     <label>ID Producto:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${productoEncontrado.getIdProducto()}" name="txtIdProducto" class="form-control" readonly="true">
                 </div>
                 <%--Nombre Producto--%>
                 <div class="form-group">
                     <label>Nombre del Producto:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${productoEncontrado.getNombreProducto()}" name="txtNombreProducto" class="form-control">
                 </div>
                 <%--Precio del Producto:--%>
                 <div class="form-group">
                     <label>Precio del Producto:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="number" min="1" step="any" value="${productoEncontrado.getPrecioProducto()}" name="txtPrecioProducto" class="form-control">
                 </div>
                 <%--Marca:--%>
                 <div class="form-group">
                     <label>Marca:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${productoEncontrado.getMarca()}" name="txtMarcaProducto" class="form-control">
                 </div>
                 <%--Fecha de Vencimiento--%>
                 <div class="form-group">
                     <label>Fecha de Vencimiento:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="date" value="${productoEncontrado.getFechaVencimiento()}" name="txtFechaVencimientoProducto" class="form-control">
                 </div>
-                <%--ID Tipo Producto--%>
-                <div class="form-group">
-                    <label>ID Tipo Producto:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <%--ID Inventario--%>
-                <div class="form-group">
-                    <label>ID Inventario:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
+                    <div class="form-group">
+                        <label>ID Tipo Producto:</label>
+                        <select name="txtIdTipoProducto">
+                            <c:forEach var="tipoProducto" items="${tipoProductos}">
+                                <option name="txtIdTipoProducto" value="${tipoProducto.getIdTipoProducto()}">${tipoProducto.getIdTipoProducto()}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                
+                    <div class="form-group">
+                        <label>ID Inventario:</label>
+                        <select name="txtIdInventario">
+                            <c:forEach var="inventario" items="${inventarios}">
+                                <option name="txtIdInventario" value="${inventario.getIdInventario()}">${inventario.getIdInventario()}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
                 <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
+                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span><input class="quitar" type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span><input class="quitar" type="submit" name="accion" value="Agregar"></span></div>
                 </div>
             </form>
         </div>
@@ -96,8 +103,26 @@
                     <td>${producto.getIdTipoProducto()}</td>
                     <td>${producto.getIdInventario()}</td>
                     <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
+                        <a class="button button-editar" href="Controlador?menu=Producto&accion=Editar&idProducto=${producto.getIdProducto()}"><span>Editar</span></a>
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${producto.getIdProducto()}"><span>Eliminar</span></a>
+
+                        <div class="modal fade" id="deleteModal-${producto.getIdProducto()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${producto.getIdProducto()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${producto.getIdProducto()}">Eliminar Afiliado</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">¿Estás seguro de que deseas eliminar este Producto?</div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-secondary" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-primary" href="Controlador?menu=Producto&accion=Eliminar&idProducto=${producto.getIdProducto()}&action=accept">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>        
