@@ -30,33 +30,46 @@
         <div class="card-body">
 
             <h1 class="form-group text-center">Compra</h1>
-            <form>
+            <form action="Controlador?menu=Compra" method="POST">
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
                     <label>ID Compra:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${compraEncontrada.getIdCompra()}" name="txtIdCompra" class="form-control" readonly="true">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
                     <label>Cantidad del Producto:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="number" min="0" step="any" value="${compraEncontrada.getCantidadProducto()}" name="txtCantidadProducto" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label>ID Empleado:</label>
-                    <input type="text" value="" name="" class="form-control">
+                        <label>ID Empleado:</label>
+                        <select name="txtIdEmpleado">
+                            <c:forEach var="empleado" items="${empleados}">
+                                <option name="txtIdEmpleado" value="${empleado.getIdEmpleado()}">${empleado.getIdEmpleado()}</option>
+                            </c:forEach>
+                        </select>
                 </div>
                 <div class="form-group">
-                    <label>ID Cliente:</label>
-                    <input type="text" value="" name="" class="form-control">
+                        <label>ID Cliente:</label>
+                        <select name="txtIdCliente">
+                            <c:forEach var="cliente" items="${clientes}">
+                                <option name="txtIdCliente" value="${cliente.getIdCliente()}">${cliente.getIdCliente()}</option>
+                            </c:forEach>
+                        </select>
                 </div>
                 <div class="form-group">
-                    <label>ID Producto:</label>
-                    <input type="text" value="" name="" class="form-control">
+                        <label>ID Producto:</label>
+                        <select name="txtIdProducto">
+                            <c:forEach var="producto" items="${productos}">
+                                <option name="txtIdProducto" value="${producto.getIdProducto()}">${producto.getIdProducto()}</option>
+                            </c:forEach>
+                        </select>
                 </div>
+                
                 <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
+                    <div name="accion" value="Actualizar" class="button button-actualizar"><span><input type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar"><span><input type="submit" name="accion" value="Agregar"></span></div>
                 </div>
             </form>
         </div>
@@ -79,8 +92,27 @@
                     <td>${compra.getIdCliente()}</td>
                     <td>${compra.getIdProducto()}</td>
                     <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
+                        <a class="button button-editar" href="Controlador?menu=Compra&accion=Editar&codigoCompra=${compra.getIdCompra()}"><span>Editar</span></a>
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${compra.getIdCompra()}"><span>Eliminar</span></a>
+                        <div class="modal fade" id="deleteModal-${compra.getIdCompra()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${compra.getIdCompra()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${compra.getIdCompra()}">Advertencia</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Esta seguro que desea eliminar el elemento?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-info" href="Controlador?menu=Compra&accion=Eliminar&codigoCompra=${compra.getIdCompra()}&Confirmar=Aceptar">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>        
