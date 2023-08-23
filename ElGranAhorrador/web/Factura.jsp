@@ -31,37 +31,53 @@
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
             <h1 class="form-group text-center">Factura</h1>
-            <form>
+            <form action="Controlador?menu=Factura" method="POST">
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
                     <label>ID Factura</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${IdFacturaEncontrado.getIdFactura()}" name="txtIdFactura" class="form-control" readonly="true">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
                     <label>Fecha</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="date" value="${IdFacturaEncontrado.getFecha()}" name="txtFecha" class="form-control" required>
+                </div>
+                 <div class="form-group">
+                        <label>ID Compra</label>
+                        <select name="txtIdCompra">
+                            <c:forEach var="compra" items="${compras}">
+                                <option name="txtIdCompra" value="${compra.getIdCompra()}">${compra.getIdCompra()}</option>
+                            </c:forEach>
+                        </select>
                 </div>
                 <div class="form-group">
-                    <label>ID Compra</label>
-                    <input type="text" value="" name="" class="form-control">
+                        <label>ID Envio</label>
+                        <select name="txtIdEnvio">
+                            <c:forEach var="envio" items="${envios}">
+                                <option name="txtIdEnvio" value="${envio.getIdEnvio()}">${envio.getIdEnvio()}</option>
+                            </c:forEach>
+                        </select>
                 </div>
                 <div class="form-group">
-                    <label>ID Envio</label>
-                    <input type="text" value="" name="" class="form-control">
+                        <label>ID Metodo Pago</label>
+                        <select name="txtIdMetodoPago">
+                            <c:forEach var="metodoPago" items="${metodoPagos}">
+                                <option name="txtIdMetodoPago" value="${metodoPago.getIdMetodoPago()}">${metodoPago.getIdMetodoPago()}</option>
+                            </c:forEach>
+                        </select>
                 </div>
                 <div class="form-group">
-                    <label>ID Metodo Pago</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>ID Cupon</label>
-                    <input type="text" value="" name="" class="form-control">
+                        <label>ID Cupon</label>
+                        <select name="txtIdCupon">
+                            <c:forEach var="cupon" items="${cupones}">
+                                <option name="txtIdCupon" value="${cupon.getIdCupon()}">${cupon.getIdCupon()}</option>
+                            </c:forEach>
+                        </select>
                 </div>
                 <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
+                    <div name="accion" value="Actualizar" class="button button-actualizar"><span><input type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar"><span><input type="submit" name="accion" value="Agregar"></span></div>
                 </div>
             </form>
         </div>
@@ -86,8 +102,24 @@
                     <td>${factura.getIdMetodoPago()}</td>
                     <td>${factura.getIdCupon()}</td>
                     <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
+                         <a class="button button-editar" href="Controlador?menu=Factura&accion=Editar&IdFactura=${factura.getIdFactura()}"><span>Editar</span></a>
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${factura.getIdFactura()}"><span>Eliminar</span></a>
+                        <div class="modal fade" id="deleteModal-${factura.getIdFactura()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${factura.getIdFactura()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${factura.getIdFactura()}">Advertencia</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Esta seguro que desea eliminar el elemento?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-info" href="Controlador?menu=Factura&accion=Eliminar&IdFactura=${factura.getIdFactura()}&Confirmar=Aceptar">Eliminar</a>
+                                    </div>
                     </td>
                 </tr>
             </c:forEach>        
