@@ -42,10 +42,9 @@ public class EnvioDAO {
             String sql = "INSERT INTO Envio (direccionEnvio, telefonoContacto, idEmpleado) VALUES (?, ?, ?)";
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, En.getIdEnvio());
-            ps.setString(2, En.getDireccionEnvio());
-            ps.setString(3, En.getTelefonoContacto());
-            ps.setInt(4, En.getIdEmpleado());
+            ps.setString(1, En.getDireccionEnvio());
+            ps.setString(2, En.getTelefonoContacto());
+            ps.setInt(3, En.getIdEmpleado());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

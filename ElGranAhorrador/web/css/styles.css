@@ -221,6 +221,17 @@ i {
   padding: 0.6em 2em;
 }
 
+.botones input
+{
+  display: inline-block;
+  position: relative;
+  padding: 0.6em 2em;
+  width: 100%;
+  text-transform: uppercase;
+  border: none;
+  background: transparent;
+}
+
 .button::before,
 .button::after,
 .button span::before,
@@ -288,11 +299,12 @@ i {
     color: #fff;
 }
 
+.button-actualizar:hover input,
 .button-agregar:hover span{
-    background-color: #DDFF33;
+    background-color: #FF5D00;
     color: #fff;
 }
-
+.button-actualizar:hover input,
 .button-actualizar:hover span{
     background-color: #4CAF50;
     color: #fff;
