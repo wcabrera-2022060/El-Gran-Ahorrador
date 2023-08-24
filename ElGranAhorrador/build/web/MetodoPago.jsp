@@ -27,59 +27,53 @@
     </head>
     <body>
 
+<div class="card-body">
+                    <h1 class="form-group text-center">MétodoPago</h1>
+                    <form action="Controlador?menu=MetodoPago" method="POST">
+                        <div class="form-group">
+                            <label>ID Método Pago:</label>
+                            <input type="text" value="${metodoPagoEncontrado.getIdMetodoPago()}" name="txtidMetodoPago" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Método Pago:</label>
+                            <input type="text" value="${metodoPagoEncontrado.getMetodoPago()}" name="txtMetodoPago" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Pago Total:</label>
+                            <input type="text" value="${metodoPagoEncontrado.getPagoTotal()}" name="txtPagoTotal" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Banco:</label>
+                            <input type="text" value="${metodoPagoEncontrado.getBanco()}" name="txtBanco" class="form-control">
+                        </div>
+                        <div class="botones">
+                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span><input class="quitar" type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span><input class="quitar" type="submit" name="accion" value="Agregar"></span></div>
+                </div>
+                    </form>
+                </div>
+            </div>
 
-        <div class="card-body">
-            <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Método Pago</h1>
-            <form>
-                <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
-                <div class="form-group">
-                    <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
-                    <label>ID Método Pago</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
-                <div class="form-group">
-                    <label>Método Pago:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Pago Total:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Banco:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
-                </div>
-            </form>
-        </div>
-
-
-        <table class="table table-hover">
-            <thead>
-            <th>ID MÉTODO PAGO</th>
-            <th>MÉTODO PAGO</th>
-            <th>PAGO TOTAL</th>
-            <th>BANCO</th>
-            <th>ACCIONES</th>
-        </thead>
-        <tbody>
-            <c:forEach var="metodopago" items="${metodoPagos}">
-                <tr>
-                    <td>${metodopago.getIdMetodoPago()}</td>
-                    <td>${metodopago.getMetodoPago()}</td>
-                    <td>${metodopago.getPagoTotal()}</td>
-                    <td>${metodopago.getBanco()}</td>
-                    <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
-                    </td>
-                </tr>
-            </c:forEach>        
+                <table class="table table-hover">
+                    <thead>
+                        <th>ID MÉTODO PAGO</th>
+                        <th>MÉTODO PAGO</th>
+                        <th>PAGO TOTAL</th>
+                        <th>BANCO</th>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="metodopago" items="${metodoPagos}">
+                    <tr>
+                        <td>${metodopago.getIdMetodoPago()}</td>
+                        <td>${metodopago.getMetodoPago()}</td>
+                        <td>${metodopago.getPagoTotal()}</td>
+                        <td>${metodopago.getBanco()}</td>
+                        <td>
+                            <a class="button button-editar" href="Controlador?menu=MetodoPago&accion=Editar&idMetodoPago=${metodopago.getIdMetodoPago()}"><span>Editar</span></a>
+                            <a class="button button-eliminar" href="Controlador?menu=MetodoPago&accion=Eliminar&idMetodoPago=${metodopago.getIdMetodoPago()}"><span>Eliminar</span></a>
+                        </td>
+                      </tr>
+                    </c:forEach>        
         </tbody>
     </table>
 

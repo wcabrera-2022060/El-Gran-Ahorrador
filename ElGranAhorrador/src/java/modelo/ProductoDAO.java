@@ -39,7 +39,7 @@ public class ProductoDAO {
     }
     
     public int agregar(Producto pr){
-        String sql = "Insert into Productos(nombreProducto,precioProducto,marca,fechaVencimiento,idTipoProducto,idInventario)\n" +
+        String sql = "Insert into Productos(nombreProducto,precioProducto,marca,fechaVencimiento,idTipoProducto,idInventario) \n" +
                 "Values (?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
@@ -50,6 +50,7 @@ public class ProductoDAO {
             ps.setDate(4, pr.getFechaVencimiento());
             ps.setInt(5, pr.getIdTipoProducto());
             ps.setInt(6, pr.getIdInventario());
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,12 +59,13 @@ public class ProductoDAO {
     
     public Producto listaCodigoProducto(int id){
         Producto pr = new Producto();
-        String sql = "Select*from where idProducto =" + id;
+        String sql = "Select * from Productos where idProducto = " + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
+                pr.setIdProducto(id);
                 pr.setNombreProducto(rs.getString(2));
                 pr.setPrecioProducto(rs.getDouble(3));
                 pr.setMarca(rs.getString(4));
@@ -78,13 +80,12 @@ public class ProductoDAO {
     }
     
     public int actualizar(Producto pr){
-        String sql = "Update Productos"
-                + "nombreProducto = ?"
-                + "precioProducto = ?"
-                + "marca = ?"
-                + "fechaVencimiento = ?"
-                + "idTipoProducto = ?"
-                + "idInventario = ?";
+        String sql = "Update Productos "
+                + "set nombreProducto = ?, "
+                + "precioProducto = ?, "
+                + "marca = ?, "
+                + "fechaVencimiento = ? "
+                + "where idProducto = ?";
         try {
           con = cn.Conexion();
            ps = con.prepareStatement(sql);
@@ -92,8 +93,7 @@ public class ProductoDAO {
            ps.setDouble(2, pr.getPrecioProducto());
            ps.setString(3, pr.getMarca());
            ps.setDate(4, pr.getFechaVencimiento());
-           ps.setInt(5, pr.getIdTipoProducto());
-           ps.setInt(6, pr.getIdInventario());
+           ps.setInt(5, pr.getIdProducto());
            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
