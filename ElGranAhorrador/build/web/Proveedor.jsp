@@ -37,33 +37,39 @@
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
             <h1 class="form-group text-center">Proveedor</h1>
-            <form>
+            <form action="Controlador?menu=Proveedor" method="POST">
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
                     <label>ID Proveedor:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${proveedorEncontrado.getIdProveedor()}" name="txtIdProveedor" class="form-control" readonly="true">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
                     <label>Proveedor:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${proveedorEncontrado.getProveedor()}" name="txtProveedor" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Cantidad Adquirida:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="number" min="0" step="any" value="${proveedorEncontrado.getCantidadAdquirida()}" name="txtCantidadAdquirida" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Total a Pagar:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="number" min="0" step="any" value="${proveedorEncontrado.getTotalPagar()}" name="txtTotalPagar" class="form-control" required>
                 </div>
-                <div class="form-group">
+
+
+               <div class="form-group">
                     <label>ID Producto:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <select name="txtIdProducto">
+                        <c:forEach var="producto" items="${productos}">
+                            <option name="txtIdProducto" value="${producto.getIdProducto()}">${producto.getIdProducto()} || ${producto.getNombreProducto()}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
+                    <div name="accion" value="Actualizar" class="button button-actualizar"><span><input type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar"><span><input type="submit" name="accion" value="Agregar"></span></div>                
                 </div>
             </form>
         </div>
@@ -87,8 +93,30 @@
                     <td>${proveedor.getTotalPagar()}</td>
                     <td>${proveedor.getIdProducto()}</td>
                     <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
+                        <a class="button button-editar" href="Controlador?menu=Proveedor&accion=Editar&codigoProveedor=${proveedor.getIdProveedor()}"><span>Editar</span></a> 
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${proveedor.getIdProveedor()}">
+                            <span>Eliminar</span>
+                        </a>
+
+                        <div class="modal fade" id="deleteModal-${proveedor.getIdProveedor()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${proveedor.getIdProveedor()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${proveedor.getIdProveedor()}">Eliminar Proveedor</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Estás seguro de que deseas eliminar este Proveeedor?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-secondary" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-primary" href="Controlador?menu=Proveedor&accion=Eliminar&codigoProveedor=${proveedor.getIdProveedor()}">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>        

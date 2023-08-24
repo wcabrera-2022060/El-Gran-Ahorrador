@@ -1,9 +1,8 @@
 <%-- 
-    Document   : Factura
-    Created on : 11/08/2023, 10:27:27 PM
-    Author     : Marco
+    Document   : Envio
+    Created on : 10/08/2023, 01:39:35 AM
+    Author     : Mr Hermes Jr
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <%--Cambiar Nombre a su entidad osea donde dice Vista Envio--%>
-        <title>Vista Factura</title>
+        <title>Vista Sucursal</title>
         <%-- Link hacia el CSS --%>
         <link rel="stylesheet" href="./css/styles.css">
 
@@ -26,54 +25,32 @@
         <script src="./js/animacionBoton.js" defer></script>
     </head>
     <body>
-
-
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Factura</h1>
-            <form action="Controlador?menu=Factura" method="POST">
+            <h1 class="form-group text-center">Sucursales</h1>
+            <form action="Controlador?menu=Sucursal" method="POST">
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
-                    <label>ID Factura</label>
-                    <input type="text" value="${IdFacturaEncontrado.getIdFactura()}" name="txtIdFactura" class="form-control" readonly="true">
+                    <label>ID Sucursal:</label>
+                    <input type="text" value="${sucursalEncontrado.getIdSucursal()}" name="txtIdSucursal" class="form-control" readonly="true">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
-                    <label>Fecha</label>
-                    <input type="date" value="${IdFacturaEncontrado.getFecha()}" name="txtFecha" class="form-control" required>
-                </div>
-                 <div class="form-group">
-                        <label>ID Compra</label>
-                        <select name="txtIdCompra">
-                            <c:forEach var="compra" items="${compras}">
-                                <option name="txtIdCompra" value="${compra.getIdCompra()}">${compra.getIdCompra()}</option>
-                            </c:forEach>
-                        </select>
+                    <label>Nombre del Sucursal:</label>
+                    <input type="text" value="${sucursalEncontrado.getNombreSucursal()}" name="txtNombreSucursal" class="form-control" required>
                 </div>
                 <div class="form-group">
-                        <label>ID Envio</label>
-                        <select name="txtIdEnvio">
-                            <c:forEach var="envio" items="${envios}">
-                                <option name="txtIdEnvio" value="${envio.getIdEnvio()}">${envio.getIdEnvio()}</option>
-                            </c:forEach>
-                        </select>
+                    <label>Direccion del Sucursal:</label>
+                    <input type="text" value="${sucursalEncontrado.getDireccionSucursal()}" name="txtDireccionSucursal" class="form-control" required>
                 </div>
                 <div class="form-group">
-                        <label>ID Metodo Pago</label>
-                        <select name="txtIdMetodoPago">
-                            <c:forEach var="metodoPago" items="${metodoPagos}">
-                                <option name="txtIdMetodoPago" value="${metodoPago.getIdMetodoPago()}">${metodoPago.getIdMetodoPago()}</option>
-                            </c:forEach>
-                        </select>
+                    <label>Apertura:</label>
+                    <input type="text" value="${sucursalEncontrado.getApertura()}" name="txtApertura" class="form-control" required>
                 </div>
                 <div class="form-group">
-                        <label>ID Cupon</label>
-                        <select name="txtIdCupon">
-                            <c:forEach var="cupon" items="${cupones}">
-                                <option name="txtIdCupon" value="${cupon.getIdCupon()}">${cupon.getIdCupon()}</option>
-                            </c:forEach>
-                        </select>
+                    <label>Cierre:</label>
+                    <input type="text" value="${sucursalEncontrado.getCierre()}" name="txtCierre" class="form-control" required>
                 </div>
                 <div class="botones">
                     <div name="accion" value="Actualizar" class="button button-actualizar"><span><input type="submit" name="accion" value="Actualizar"></span></div>
@@ -85,30 +62,29 @@
 
         <table class="table table-hover">
             <thead>
-            <th>ID Factura</th>
-            <th>FECHA</th>
-            <th>ID COMPRA</th>
-            <th>ID ENVIO</th>
-            <th>ID METODO PAGO</th>
-            <th>ID CUPON</th>
+            <th>ID SUCURSAL</th>
+            <th>NOMBRE SUCURSAL</th>
+            <th>DIRECCIÓN SUCURSAL</th>
+            <th>APERTURA</th>
+            <th>CIERRE</th>
+            <th>ACCIONES</th>
         </thead>
         <tbody>
-            <c:forEach var="factura" items="${facturas}">
+            <c:forEach var="sucursal" items="${sucursales}">
                 <tr>
-                    <td>${factura.getIdFactura()}</td>
-                    <td>${factura.getFecha()}</td>
-                    <td>${factura.getIdCompra()}</td>
-                    <td>${factura.getIdEnvio()}</td>
-                    <td>${factura.getIdMetodoPago()}</td>
-                    <td>${factura.getIdCupon()}</td>
+                    <td>${sucursal.getIdSucursal()}</td>
+                    <td>${sucursal.getNombreSucursal()}</td>
+                    <td>${sucursal.getDireccionSucursal()}</td>
+                    <td>${sucursal.getApertura()}</td>
+                    <td>${sucursal.getCierre()}</td>
                     <td>
-                         <a class="button button-editar" href="Controlador?menu=Factura&accion=Editar&IdFactura=${factura.getIdFactura()}"><span>Editar</span></a>
-                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${factura.getIdFactura()}"><span>Eliminar</span></a>
-                        <div class="modal fade" id="deleteModal-${factura.getIdFactura()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${factura.getIdFactura()}" aria-hidden="true">
+                        <a class="button button-editar" href="Controlador?menu=Sucursal&accion=Editar&codigoSucursal=${sucursal.getIdSucursal()}"><span>Editar</span></a>
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${sucursal.getIdSucursal()}"><span>Eliminar</span></a>
+                        <div class="modal fade" id="deleteModal-${sucursal.getIdSucursal()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${sucursal.getIdSucursal()}" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalTitle-${factura.getIdFactura()}">Advertencia</h5>
+                                        <h5 class="modal-title" id="deleteModalTitle-${sucursal.getIdSucursal()}">Advertencia</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -118,8 +94,11 @@
                                     </div>
                                     <div class="modal-footer">
                                         <a class="btn btn-danger" href="#" data-dismiss="modal">Cancelar</a>
-                                        <a class="btn btn-info" href="Controlador?menu=Factura&accion=Eliminar&IdFactura=${factura.getIdFactura()}&Confirmar=Aceptar">Eliminar</a>
+                                        <a class="btn btn-info" href="Controlador?menu=Sucursal&accion=Eliminar&codigoSucursal=${sucursal.getIdSucursal()}&Confirmar=Aceptar">Eliminar</a>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>        

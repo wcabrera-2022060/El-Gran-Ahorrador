@@ -28,29 +28,33 @@
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
             <h1 class="form-group text-center">Envío</h1>
-            <form>
+            <form action="Controlador?menu=Envio" method="POST">
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
                     <label>ID Envío:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${envioEncontrado.getIdEnvio()}" name="txtIdEnvio" class="form-control" readonly="true">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
                     <label>Direccion del Envio:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${envioEncontrado.getDireccionEnvio()}" name="txtDireccionEnvio" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Teléfono Contacto:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="number" value="${envioEncontrado.getTelefonoContacto()}" name="txtTelefonoContacto" class="form-control" required >
                 </div>
                 <div class="form-group">
                     <label>ID Empleado:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
+                    <select name="txtIdEmpleado">
+                        <c:forEach var="empleado" items="${empleados}">
+                            <option name="txtIdEmpleado" value="${empleado.getIdEmpleado()}">${empleado.getIdEmpleado()} || ${empleado.getNombreEmpleado()}</option>
+                        </c:forEach>
+                    </select>
+                              </div>
                 <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
+                    <div name="accion" value="Actualizar" class="button button-actualizar"><span><input type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar"><span><input type="submit" name="accion" value="Agregar"></span></div>
                 </div>
             </form>
         </div>
@@ -72,8 +76,27 @@
                     <td>${envio.getTelefonoContacto()}</td>
                     <td>${envio.getIdEmpleado()}</td>
                     <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
+                        <a class="button button-editar" href="Controlador?menu=Envio&accion=Editar&codigoEnvio=${envio.getIdEnvio()}"><span>Editar</span></a>
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${envio.getIdEnvio()}"><span>Eliminar</span></a>
+                        <div class="modal fade" id="deleteModal-${envio.getIdEnvio()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${envio.getIdEnvio()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${envio.getIdEnvio()}">Advertencia</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Esta seguro que desea eliminar el elemento?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-info" href="Controlador?menu=Envio&accion=Eliminar&codigoEnvio=${envio.getIdEnvio()}&Confirmar=Aceptar">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>        

@@ -7,11 +7,11 @@ use DBElGranAhorrador;
 Create table TipoEmpleado(
     idTipoEmpleado int not null auto_increment,
     tipoEmpleado varchar(100) not null,
-    descipcion varchar(100) not null,
+    descripcion varchar(100) not null,
     departamento varchar(100) not null,
     primary key PK_idTipoEmpleado(idTipoEmpleado)
 );
-
+select * from TipoEmpleado;
 Create table Sucursales(
 	idSucursal int not null auto_increment,
     nombreSucursal varchar(100) not null,
@@ -175,7 +175,7 @@ Create table Factura(
 
 -- ----- Sin FK ----- --
 -- TipoEmpleado
-Insert into TipoEmpleado(tipoEmpleado, descipcion, departamento)
+Insert into TipoEmpleado(tipoEmpleado, descripcion, departamento)
 	values	('Cajero','Manejan el dinero y tienen que cuadrar las cajas.','Caja'),
 			('Reponedor','Reciben el producto, ayudan a descargarlo y a distribuirlo.','Almacén');
 
