@@ -17,7 +17,7 @@ public class ClienteDAO {
     
     public Cliente validar(int idCliente, String nombreCliente){
         Cliente cliente = new Cliente();
-        String sql = "select*from Clientes where idCliente = ? and nombreCliente = ?";
+        String sql = "select * from Clientes where idCliente = ? and nombreCliente = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -70,8 +70,7 @@ public class ClienteDAO {
     }
     
     public int agregar(Cliente cl){
-        String sql = "Insert into Clientes (nombreCliente, apellidoCliente"
-                + "telefonoCliente, direccionCliente, idLogin, idAfiliado)"
+        String sql = "Insert into Clientes(nombreCliente, apellidoCliente, telefonoCliente, direccionCliente, idLogin, idAfiliado)"
                 + "values(?,?,?,?,?,?)";
         try{
             con = cn.Conexion();
@@ -91,29 +90,27 @@ public class ClienteDAO {
     
     public Cliente listarCodigoCliente(int id){
         Cliente cl = new Cliente();
-        String sql = "Select"
-                + "C.idCliente,"
-                + "C.nombreCliente,"
-                + "C.apellidoCliente,"
-                + "C.telefonoCliente,"
-                + "C.direccionCliente,"
-                + "C.idLogin, "
-                + "C.idAfiliado"
-                + "from Clientes C where C.idCliente = " + id;
+        String sql = "Select\n" +
+"                C.nombreCliente,\n" +
+"                C.apellidoCliente,\n" +
+"                C.telefonoCliente,\n" +
+"                C.direccionCliente,\n" +
+"                C.idLogin, \n" +
+"                C.idAfiliado\n" +
+"                from Clientes C where C.idCliente = "+ id;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()){
-                cl.setNombreCliente(rs.getString(2));
-                cl.setApellidoCliente(rs.getString(3));
-                cl.setTelefonoCliente(rs.getString(4));
-                cl.setDireccionCliente(rs.getString(5));
-                cl.setIdLogin(rs.getInt(6));
-                cl.setIdAfiliado(rs.getInt(7));
+                cl.setNombreCliente(rs.getString(1));
+                cl.setApellidoCliente(rs.getString(2));
+                cl.setTelefonoCliente(rs.getString(3));
+                cl.setDireccionCliente(rs.getString(4));
+                cl.setIdLogin(rs.getInt(5));
+                cl.setIdAfiliado(rs.getInt(6));
+                cl.setIdCliente(id);
             }
-                        
-            
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -121,18 +118,20 @@ public class ClienteDAO {
     }
     
     public int actualizar (Cliente cl){
-        String sql = "Update Cliente" 
-                +"set nombreCliente = ?,"
-                +"apellidoCliente = ?,"
-                +"telefonoCliente = ?,"
-                +"direccionCliente = ?,";
+        String sql = "Update Clientes" +
+"                set nombreCliente = ?," +
+"                apellidoCliente = ?," +
+"                telefonoCliente = ?," +
+"                direccionCliente = ?" +
+"                where idCliente = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, cl.getNombreCliente());
             ps.setString(2, cl.getApellidoCliente());
             ps.setString(3, cl.getTelefonoCliente());
-            ps.setString(4, cl.getTelefonoCliente());
+            ps.setString(4, cl.getDireccionCliente());
+            ps.setInt(5, cl.getIdCliente());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();

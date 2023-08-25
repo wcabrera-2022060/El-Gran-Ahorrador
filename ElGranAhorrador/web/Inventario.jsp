@@ -27,59 +27,72 @@
     </head>
     <body>
 
+<div class="card-body">
+                    <h1 class="form-group text-center">Inventario</h1>
+                    <form action="Controlador?menu=Inventario" method="POST">
+                        <div class="form-group">
+                            <label>ID Inventario:</label>
+                            <input type="text" value="${inventarioEncontrado.getIdInventario()}" name="txtidInventario" class="form-control" readonly="true">
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad Disponible:</label>
+                            <input type="number" min="1" step="any" value="${inventarioEncontrado.getCantidadDisponible()}" name="txtCantidadDisponible" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Direccion Disponibilidad:</label>
+                            <input type="text" value="${inventarioEncontrado.getDireccionDisponibilidad()}" name="txtDireccionDisponibilidad" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Disponibilidad:</label>
+                            <input type="text" value="${inventarioEncontrado.getDisponibilidad()}" name="txtDisponibilidad" class="form-control" required>
+                        </div>
+                        <div class="botones">
+                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span><input class="quitar" type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span><input class="quitar" type="submit" name="accion" value="Agregar"></span></div>
+                </div>
+                    </form>
+                </div>
+                      
 
-        <div class="card-body">
-            <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Inventario</h1>
-            <form>
-                <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
-                <div class="form-group">
-                    <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
-                    <label>ID Inventario:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
-                <div class="form-group">
-                    <label>Cantidad Disponible:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Direccion Disponibilidad:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Disponibilidad:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>
-                <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
-                </div>
-            </form>
-        </div>
-
-
-        <table class="table table-hover">
-            <thead>
-            <th>ID INVENTARIO</th>
-            <th>CANTIDAD DISPONIBLE</th>
-            <th>DIRECCIÓN DISPONIBILIDAD</th>
-            <th>DISPONIBILIDAD</th>
-            <th>ACCIONES</th>
-        </thead>
-        <tbody>
-            <c:forEach var="inventario" items="${inventarios}">
-                <tr>
-                    <td>${inventario.getIdInventario()}</td>
-                    <td>${inventario.getCantidadDisponible()}</td>
-                    <td>${inventario.getDireccionDisponibilidad()}</td>
-                    <td>${inventario.getDisponibilidad()}</td>
-                    <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
-                    </td>
-                </tr>
-            </c:forEach>        
+            <table class="table table-hover">
+                    <thead>
+                        <th>ID INVENTARIO</th>
+                        <th>CANTIDAD DISPONIBLE</th>
+                        <th>DIRECCIÓN DISPONIBILIDAD</th>
+                        <th>DISPONIBILIDAD</th>
+                        <th>ACCIONES</th>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="inventario" items="${inventarios}">
+                    <tr>
+                        <td>${inventario.getIdInventario()}</td>
+                        <td>${inventario.getCantidadDisponible()}</td>
+                        <td>${inventario.getDireccionDisponibilidad()}</td>
+                        <td>${inventario.getDisponibilidad()}</td>
+                        <td>
+                            <a class="button button-editar" href="Controlador?menu=Inventario&accion=Editar&idInventario=${inventario.getIdInventario()}"><span>Editar</span></a>
+                            <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${inventario.getIdInventario()}"><span>Eliminar</span></a>
+                            
+                            <div class="modal fade" id="deleteModal-${inventario.getIdInventario()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${inventario.getIdInventario()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${inventario.getIdInventario()}">Eliminar Afiliado</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">¿Estás seguro de que deseas eliminar este Inventario?</div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-secondary" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-primary" href="Controlador?menu=Inventario&accion=Eliminar&idInventario=${inventario.getIdInventario()}&action=accept">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </td>
+                    </tr>
+                    </c:forEach>       
         </tbody>
     </table>
 

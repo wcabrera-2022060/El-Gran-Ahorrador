@@ -42,8 +42,7 @@ public class FacturaDAO {
     }
     
     public int agregar(Factura fc){
-        String sql = "Insert into Factura(fecha, idCompra, idEnvio, idMetodoPago, idCupon)" +
-                        "values (?, ?, ?, ?, ?)";
+        String sql = "Insert into Factura(fecha, idCompra, idEnvio, idMetodoPago, idCupon) values (?, ?, ?, ?, ?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
