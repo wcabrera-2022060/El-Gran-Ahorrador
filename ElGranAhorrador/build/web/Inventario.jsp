@@ -32,19 +32,19 @@
                     <form action="Controlador?menu=Inventario" method="POST">
                         <div class="form-group">
                             <label>ID Inventario:</label>
-                            <input type="text" value="${inventarioEncontrado.getIdInventario()}" name="txtidInventario" class="form-control">
+                            <input type="text" value="${inventarioEncontrado.getIdInventario()}" name="txtidInventario" class="form-control" readonly="true">
                         </div>
                         <div class="form-group">
                             <label>Cantidad Disponible:</label>
-                            <input type="text" value="${inventarioEncontrado.getCantidadDisponible()}" name="txtCantidadDisponible" class="form-control">
+                            <input type="number" min="1" step="any" value="${inventarioEncontrado.getCantidadDisponible()}" name="txtCantidadDisponible" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Direccion Disponibilidad:</label>
-                            <input type="text" value="${inventarioEncontrado.getDireccionDisponibilidad()}" name="txtDireccionDisponibilidad" class="form-control">
+                            <input type="text" value="${inventarioEncontrado.getDireccionDisponibilidad()}" name="txtDireccionDisponibilidad" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Disponibilidad:</label>
-                            <input type="text" value="${inventarioEncontrado.getDisponibilidad()}" name="txtDisponibilidad" class="form-control">
+                            <input type="text" value="${inventarioEncontrado.getDisponibilidad()}" name="txtDisponibilidad" class="form-control" required>
                         </div>
                         <div class="botones">
                     <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span><input class="quitar" type="submit" name="accion" value="Actualizar"></span></div>
@@ -71,7 +71,25 @@
                         <td>${inventario.getDisponibilidad()}</td>
                         <td>
                             <a class="button button-editar" href="Controlador?menu=Inventario&accion=Editar&idInventario=${inventario.getIdInventario()}"><span>Editar</span></a>
-                            <a class="button button-eliminar" href="Controlador?menu=Inventario&accion=Eliminar&idInventario=${inventario.getIdInventario()}"><span>Eliminar</span></a>
+                            <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${inventario.getIdInventario()}"><span>Eliminar</span></a>
+                            
+                            <div class="modal fade" id="deleteModal-${inventario.getIdInventario()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${inventario.getIdInventario()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${inventario.getIdInventario()}">Eliminar Afiliado</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">¿Estás seguro de que deseas eliminar este Inventario?</div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-secondary" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-primary" href="Controlador?menu=Inventario&accion=Eliminar&idInventario=${inventario.getIdInventario()}&action=accept">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </td>
                     </tr>
                     </c:forEach>       

@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/JoseMario/Desktop/ElGranAhorrador/src/java/config/Conexion.java</file>
-            <file>file:/C:/Users/JoseMario/Desktop/ElGranAhorrador/src/java/modelo/MetodoPago.java</file>
             <file>file:/C:/Users/JoseMario/Desktop/ElGranAhorrador/web/MetodoPago.jsp</file>
-            <file>file:/C:/Users/JoseMario/Desktop/ElGranAhorrador/src/java/modelo/MetodoPagoDAO.java</file>
+            <file>file:/C:/Users/JoseMario/Desktop/ElGranAhorrador/web/Producto.jsp</file>
             <file>file:/C:/Users/JoseMario/Desktop/ElGranAhorrador/src/java/controlador/Controlador.java</file>
-            <file>file:/C:/Users/JoseMario/Desktop/ElGranAhorrador/web/Cupon.jsp</file>
             <file>file:/C:/Users/JoseMario/Desktop/ElGranAhorrador/web/Inventario.jsp</file>
-            <file>file:/C:/Users/JoseMario/Desktop/ElGranAhorrador/src/java/modelo/InventarioDAO.java</file>
         </group>
     </open-files>
 </project-private>
