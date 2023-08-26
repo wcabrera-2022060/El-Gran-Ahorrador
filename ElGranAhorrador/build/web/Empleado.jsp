@@ -30,37 +30,45 @@
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Empleados--%>
             <h1 class="form-group text-center">Empleados</h1>
-            <form>
+            <form action="Controlador?menu=Empleado" method="POST">
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
                     <label>ID Empleado:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${empleadoEncontrado.getIdEmpleado()}" name="txtIdEmpleado" class="form-control" readonly="true">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
                     <label>Nombre Empleado:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${empleadoEncontrado.getNombreEmpleado()}" name="txtNombreEmpleado" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Apellido Empleado:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${empleadoEncontrado.getApellidoEmpleado()}" name="txtApellidoEmpleado" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Sueldo:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${empleadoEncontrado.getSueldo()}" name="txtSueldo" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>ID Tipo Empleado:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <select name="txtIdTipoEmpleado">
+                        <c:forEach var="tipoEmpleado" items="${tipoEmpleados}">
+                            <option name="txtIdTipoEmpleado" value="${tipoEmpleado.getIdTipoEmpleado()}">${tipoEmpleado.getIdTipoEmpleado()} || ${tipoEmpleado.getTipoEmpleado()}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>ID Sucursal:</label>
-                    <input type="text" value="" name="" class="form-control">
-                </div>                
+                    <select name="txtIdSucursal">
+                        <c:forEach var="sucursal" items="${sucursales}">
+                            <option name="txtIdSucursal" value="${sucursal.getIdSucursal()}">${sucursal.getIdSucursal()} || ${sucursal.getNombreSucursal()}</option>
+                        </c:forEach>
+                    </select>
+                </div>              
                 <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
+                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span><input class="quitar" type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span><input class="quitar" type="submit" name="accion" value="Agregar"></span></div>
                 </div>
             </form>
         </div>
@@ -86,8 +94,26 @@
                     <td>${empleado.getIdTipoEmpleado()}</td>
                     <td>${empleado.getIdSucursal()}</td>                    
                     <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
+                        <a class="button button-editar" href="Controlador?menu=Empleado&accion=Editar&idEmpleado=${empleado.getIdEmpleado()}"><span>Editar</span></a>
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${empleado.getIdEmpleado()}"><span>Eliminar</span></a>
+
+                        <div class="modal fade" id="deleteModal-${empleado.getIdEmpleado()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${empleado.getIdEmpleado()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${empleado.getIdEmpleado()}">Eliminar Afiliado</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">¿Estás seguro de que deseas eliminar este elemento?</div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-secondary" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-primary" href="Controlador?menu=Empleado&accion=Eliminar&idEmpleado=${empleado.getIdEmpleado()}&action=accept">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>        

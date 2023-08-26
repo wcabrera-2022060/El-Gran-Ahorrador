@@ -15,7 +15,7 @@ public class InventarioDAO {
     int resp;
     
     public List listarInventario(){
-        String sql  = "Select I.idInventario, I.cantidadDisponible, I.direccionDisponibilidad, I.disponibilidad from Inventario I";
+        String sql  = "select * from Inventario";
         List<Inventario> listaInventario = new ArrayList<>();
         try{
             con = cn.Conexion();
@@ -36,7 +36,7 @@ public class InventarioDAO {
     }
     
     public int agregarInventario(Inventario in){
-        String sql = "Insert into Inventario (cantidadDisponible, direccionDisponibilidad, disponibilidad) values(?,?,?)";
+        String sql = "insert into Inventario (cantidadDisponible, direccionDisponibilidad, disponibilidad) values(?,?,?)";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -52,7 +52,7 @@ public class InventarioDAO {
     
     public Inventario buscarInventario(int id){
         Inventario in = new Inventario();
-        String sql = "Select I.idInventario, I.cantidadDisponible, I.direccionDisponibilidad, I.disponibilidad from Inventario I where I.idInventario ="+id;
+        String sql = "Select * from Inventario where idInventario ="+id;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -70,11 +70,7 @@ public class InventarioDAO {
     }
     
     public int actualizarInventario(Inventario in){
-        String sql = "Update Inventario"
-                + "set cantidadDisponible = ?,"
-                + "direccionDisponibilidad = ?,"
-                + "disponibilidad = ?"
-                + "where idInventario = ?";
+        String sql = "Update Inventario set cantidadDisponible = ?,direccionDisponibilidad = ?, disponibilidad = ? where idInventario = ?";
         
         try{
             con = cn.Conexion();
@@ -91,7 +87,7 @@ public class InventarioDAO {
     }
     
     public void eliminarInventario(int id){
-        String sql = "delete from Inventario where codigoInventario = "+id;
+        String sql = "delete from Inventario where idInventario = "+id;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

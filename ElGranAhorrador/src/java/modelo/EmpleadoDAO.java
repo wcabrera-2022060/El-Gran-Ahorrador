@@ -47,7 +47,7 @@ public class EmpleadoDAO {
 
     //Método Agregar Empleado
 public int agregar(Empleado empleados) {
-        String sql = "Insert into Empleados(nombreEmpleado, apellidoEmpleado, sueldo, idTipoEmpleado, idSucursal) values('?','?','?',1,1)";
+        String sql = "Insert into Empleados(nombreEmpleado, apellidoEmpleado, sueldo, idTipoEmpleado, idSucursal) values(?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -92,13 +92,10 @@ public int agregar(Empleado empleados) {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            con = cn.Conexion();
-            ps = con.prepareStatement(sql);
             ps.setString(1, empleados.getNombreEmpleado());
             ps.setString(2, empleados.getApellidoEmpleado());
             ps.setDouble(3, empleados.getSueldo());
-            ps.setInt(4, empleados.getIdTipoEmpleado());
-            ps.setInt(5, empleados.getIdSucursal());
+            ps.setInt(4, empleados.getIdEmpleado());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

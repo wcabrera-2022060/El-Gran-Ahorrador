@@ -1,19 +1,19 @@
 package modelo;
 
-import java.util.Date;
+import java.sql.Time;
 
 
 public class Sucursal{
   private int idSucursal;
   private String nombreSucursal;
   private String direccionSucursal;
-  private Date apertura;
-  private Date cierre;
+  private Time apertura;
+  private Time cierre;
 
   public Sucursal() {
   }
 
-  public Sucursal(int idSucursal, String nombreSucursal, String direccionSucursal, Date apertura, Date cierre) {
+  public Sucursal(int idSucursal, String nombreSucursal, String direccionSucursal, Time apertura, Time cierre) {
     this.idSucursal = idSucursal;
     this.nombreSucursal = nombreSucursal;
     this.direccionSucursal = direccionSucursal;
@@ -45,21 +45,23 @@ public class Sucursal{
         this.direccionSucursal = direccionSucursal;
     }
 
-    public Date getApertura() {
+    public Time getApertura() {
         return apertura;
     }
 
-    public void setApertura(Date apertura) {
+    public void setApertura(Time apertura) {
         this.apertura = apertura;
     }
 
-    public Date getCierre() {
+    public Time getCierre() {
         return cierre;
     }
 
-    public void setCierre(Date cierre) {
+    public void setCierre(Time cierre) {
         this.cierre = cierre;
     }
+
+    
 
    
 }

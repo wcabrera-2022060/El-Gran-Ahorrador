@@ -15,7 +15,7 @@ public class TipoEmpleadoDAO {
   int resp;
 
   //Método Listar
-  public List<TipoEmpleado> listar() {
+  public List<TipoEmpleado> listarTipoEmpleado() {
     String sql = "SELECT * FROM TipoEmpleado";
     List<TipoEmpleado> listaTipoEmpleado = new ArrayList<>();
     try {
@@ -38,15 +38,14 @@ public class TipoEmpleadoDAO {
   }
 
   //Método Agregar
-  public int agregar(TipoEmpleado TEm) {
+  public int agregarTipoEmpleado(TipoEmpleado TEm) {
     try {
-      String sql = "INSERT INTO TipoEmpleado (idTipoEmpleado, tipoEmpleado, descripcion, departamento) VALUES (?, ?, ?, ?)";
+      String sql = "INSERT INTO TipoEmpleado (tipoEmpleado, descripcion, departamento) VALUES (?, ?, ?)";
       con = cn.Conexion();
       ps = con.prepareStatement(sql);
-      ps.setInt(1, TEm.getIdTipoEmpleado());
-      ps.setString(2, TEm.getTipoEmpleado());
-      ps.setString(3, TEm.getDescripcion());
-      ps.setString(4, TEm.getDepartamento());
+      ps.setString(1, TEm.getTipoEmpleado());
+      ps.setString(2, TEm.getDescripcion());
+      ps.setString(3, TEm.getDepartamento());
       ps.executeUpdate();
     } catch (Exception e) {
       e.printStackTrace();
@@ -56,7 +55,7 @@ public class TipoEmpleadoDAO {
   }
 
   //Método Método buscar por código
-  public TipoEmpleado listarCodigoEmpleado(int id) {
+  public TipoEmpleado buscarTipoEmpleado(int id) {
     //instanciar un objeto de tipo TipoEmpleado
     TipoEmpleado TEm = new TipoEmpleado();
     String sql = "SELECT * FROM TipoEmpleado WHERE idTipoEmpleado = " + id;
@@ -78,15 +77,15 @@ public class TipoEmpleadoDAO {
   }
 
   //Método Editar
-  public int actualizar(TipoEmpleado TEm) {
+  public int actualizarTipoEmpleado(TipoEmpleado TEm) {
     String sql = "UPDATE TipoEmpleado SET tipoEmpleado = ?, descripcion = ?, departamento = ? where idTipoEmpleado = ?";
     try {
       con = cn.Conexion();
       ps = con.prepareStatement(sql);
-      ps.setInt(1, TEm.getIdTipoEmpleado());
-      ps.setString(2, TEm.getTipoEmpleado());
-      ps.setString(3, TEm.getDescripcion());
-      ps.setString(4, TEm.getDepartamento());
+      ps.setString(1, TEm.getTipoEmpleado());
+      ps.setString(2, TEm.getDescripcion());
+      ps.setString(3, TEm.getDepartamento());
+      ps.setInt(4, TEm.getIdTipoEmpleado());
       ps.executeUpdate();
     } catch (Exception e) {
       e.printStackTrace();
@@ -96,7 +95,7 @@ public class TipoEmpleadoDAO {
   }
 
   //Método Eliminar
-  public void eliminar(int id) {
+  public void eliminarTipoEmpleado(int id) {
     String sql = "DELETE FROM TipoEmpleado WHERE idTipoEmpleado = " + id;
     try {
       con = cn.Conexion();
@@ -105,6 +104,5 @@ public class TipoEmpleadoDAO {
     } catch (Exception e) {
       e.printStackTrace();
     }
-
   }
 }

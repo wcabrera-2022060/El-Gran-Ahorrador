@@ -31,29 +31,30 @@
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
             <h1 class="form-group text-center">Cupón</h1>
-            <form>
+            <form action="Controlador?menu=Cupon" method="POST">
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
                     <label>ID Cupón:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${cuponEncontrado.getIdCupon()}" name="txtIdCupon" class="form-control" readonly="true">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
                     <label>Fecha de Caducidad:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="date" value="${cuponEncontrado.getFechaCaducidad()}" name="txtFechaCaducidad" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Descuento:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="number" value="${cuponEncontrado.getDescuento()}" name="txtDescuento" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Validez:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${cuponEncontrado.getValidez()}" name="txtValidez" class="form-control" required>
                 </div>
                 <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
+                    <div name="accion" value="Actualizar" class="button button-actualizar"><span><input type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar"><span><input type="submit" name="accion" value="Agregar"></span></div>
+
                 </div>
             </form>
         </div>
@@ -75,8 +76,32 @@
                     <td>${cupon.getDescuento()}</td>
                     <td>${cupon.getValidez()}</td>
                     <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
+                        <a class="button button-editar" href="Controlador?menu=Cupon&accion=Editar&codigoCupon=${cupon.getIdCupon()}"><span>Editar</span></a> 
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${cupon.getIdCupon()}">
+                            <span>Eliminar</span>
+                        </a>
+
+
+
+                        <div class="modal fade" id="deleteModal-${cupon.getIdCupon()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${cupon.getIdCupon()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${cupon.getIdCupon()}">Eliminar Cupon</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                    <div class="modal-body">
+                                        ¿Estás seguro de que deseas eliminar este Cupón?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-secondary" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-primary" href="Controlador?menu=Cupon&accion=Eliminar&codigoCupon=${cupon.getIdCupon()}">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>        

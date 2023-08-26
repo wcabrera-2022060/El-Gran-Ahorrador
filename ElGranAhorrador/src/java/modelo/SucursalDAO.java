@@ -7,139 +7,104 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class SucursalDAO {
-  Conexion cn = new Conexion();
-  Connection con;
-  PreparedStatement ps;
-  ResultSet rs;
-  int resp;
-  
-  public Sucursal validar(String idSucursal){
-    Sucursal sucursal = new Sucursal();
-    String sql = "select * from Sucursal where idSucursal = ?";
-    try{
-      con = cn.Conexion();
-      ps = con.prepareStatement(sql);
-      ps.setString(1, idSucursal);
-      rs = ps.executeQuery();
-      while(rs.next()){
-        sucursal.setIdSucursal(rs.getInt("idSucursal"));
-        sucursal.setNombreSucursal(rs.getString("nombreSucursal"));
-        sucursal.setDireccionSucursal(rs.getString("direccionSucursal"));
-        
-      }
-      
-    }catch(Exception e){
-      e.printStackTrace();
+
+    Conexion cn = new Conexion();
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    int resp;
+
+    public List<Sucursal> listarSucursal() {
+        String sql = "SELECT * FROM Sucursales";
+        List<Sucursal> listaSucursal = new ArrayList<>();
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Sucursal Su = new Sucursal();
+                Su.setIdSucursal(rs.getInt(1));
+                Su.setNombreSucursal(rs.getString(2));
+                Su.setDireccionSucursal(rs.getString(3));
+                Su.setApertura(rs.getTime(4));
+                Su.setCierre(rs.getTime(5));
+                listaSucursal.add(Su);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaSucursal;
     }
-    
-    return sucursal;
-   }
-  
-  //Listar Sucursal
-  
-  public List listar(){
-    String sql = "select * from Sucursales";
-    List<Sucursal> listaSucursal = new ArrayList<>();
-    try{
-      con = cn.Conexion();
-      ps = con.prepareStatement(sql);
-      rs = ps.executeQuery();
-      while (rs.next()){
-        Sucursal su = new Sucursal();
-        su.setIdSucursal(rs.getInt(1));
-        su.setNombreSucursal(rs.getString(2));
-        su.setDireccionSucursal(rs.getString(3));
-        su.setApertura(rs.getTime(4));
-        su.setCierre(rs.getTime(5));
-        listaSucursal.add(su);
-      }
-    }catch(Exception e){
-      e.printStackTrace();
+
+    public int agregarSucursal(Sucursal Su) {
+        try {
+            String sql = "INSERT INTO Sucursales (nombreSucursal, direccionSucursal, apertura, cierre) VALUES (?, ?, ?, ?)";
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, Su.getNombreSucursal());
+            ps.setString(2, Su.getDireccionSucursal());
+            ps.setTime(3, Su.getApertura());
+            ps.setTime(4, Su.getCierre());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resp;
     }
-    
-    return listaSucursal;
-  }
-  
-  
-  //Agregar Sucursal
-  
-  public int agregar(Sucursal sucur){
-    String sql = "insert into Sucursal (nombreSucursal, direccionSucursal, apertura, cierre) values (?,?,?,?)";
-    try{
-      con = cn.Conexion();
-      ps = con.prepareStatement(sql);
-      ps.setString(1, sucur.getNombreSucursal());
-      ps.setString(2, sucur.getDireccionSucursal());
-      
-      ps.executeUpdate();
-    }catch(Exception e){
-      e.printStackTrace();
+
+    public Sucursal listarCodigoSucursal(int id) {
+
+        Sucursal Su = new Sucursal();
+        String sql = "SELECT * FROM Sucursales WHERE idSucursal = " + id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Su.setIdSucursal(rs.getInt(1));
+                Su.setNombreSucursal(rs.getString(2));
+                Su.setDireccionSucursal(rs.getString(3));
+                Su.setApertura(rs.getTime(4));
+                Su.setCierre(rs.getTime(5));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return Su;
     }
-    
-    return resp;
-  }
-  
-  
-  //Buscar por código Sucursal
-  
-  public Sucursal listarIdSucursal(int id){
-    //instanciar un objeto de tipo Empleado
-    Sucursal sucur = new Sucursal();
-    String sql = "Select * from Sucursal where idSucursal = "+id;
-    try{
-      con = cn.Conexion();
-      ps = con.prepareStatement(sql);
-      rs = ps.executeQuery();
-      while(rs.next()){
-        sucur.setNombreSucursal(rs.getString(2));
-        sucur.setDireccionSucursal(rs.getString(3));
-        //apertura
-        //cierre
-      }
-    }catch(Exception e){
-      e.printStackTrace();
+
+    public int actualizarSucursal(Sucursal Su) {
+        String sql = "UPDATE Sucursales SET nombreSucursal = ?, direccionSucursal = ?, apertura = ?, cierre = ? where idSucursal = ?";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, Su.getNombreSucursal());
+            ps.setString(2, Su.getDireccionSucursal());
+            ps.setTime(3, Su.getApertura());
+            ps.setTime(4, Su.getCierre());
+            ps.setInt(5, Su.getIdSucursal());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resp;
     }
-    
-    return sucur;
-  }
-  
-  
-  //Editar Sucursal
-  
-  public int actualizar(Sucursal sucur){
-    String sql = "Update Sucursal set nombreSucursal = ?, direccionSucursal = ?, apertura = ?, cierre = ? where idSucursal = ?";
-    try{
-      con = cn.Conexion();
-      ps = con.prepareStatement(sql);
-      ps.setString(1, sucur.getNombreSucursal());
-      ps.setString(2, sucur.getDireccionSucursal());
-      //apertura
-      //cierre
-      ps.setInt(5, sucur.getIdSucursal());
-      ps.executeUpdate();
-    }catch(Exception e){
-      e.printStackTrace();
+
+    public void eliminarSucursal(int id) {
+        String sql = "DELETE FROM Sucursales WHERE idSucursal = " + id;
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
-    
-    return resp;
-  }
-  
-  
-  //Método Eliminar
-  
-  public void eliminar(int id){
-    String sql = "delete from Sucursal where idSucursal = "+id;
-    try{
-      con = cn.Conexion();
-      ps = con.prepareStatement(sql);
-      ps.executeUpdate();
-    }catch(Exception e){
-      e.printStackTrace();
-    }
-    
-  }
-  
-  
+
 }

@@ -10,7 +10,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <%--Cambiar Nombre a su entidad osea donde dice Vista Envio--%>
         <title>Vista Tipo Producto</title>
         <%-- Link hacia el CSS --%>
         <link rel="stylesheet" href="./css/styles.css">
@@ -28,31 +27,27 @@
 
 
         <div class="card-body">
-            <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
             <h1 class="form-group text-center">Tipo Producto</h1>
-            <form>
-                <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
+            <form action="Controlador?menu=TipoProducto" method="POST">
                 <div class="form-group">
-                    <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
                     <label>ID Tipo Producto:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${tipoProductoSeleccionado.getIdTipoProducto()}" name="txtIdTipoProducto" class="form-control" readonly="true">
                 </div>
-                <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
                     <label>Tipo Producto:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${tipoProductoSeleccionado.getTipoProducto()}" name="txtTipoProducto" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Descripción:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${tipoProductoSeleccionado.getDescripcion()}" name="txtDescripcion" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Categoría:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${tipoProductoSeleccionado.getCategoria()}" name="txtCategoria" class="form-control" required>
                 </div>
                 <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
+                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span><input class="quitar" type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span><input class="quitar" type="submit" name="accion" value="Agregar"></span></div>
                 </div>
             </form>
         </div>
@@ -74,8 +69,27 @@
                     <td>${tipoProducto.getDescripcion()}</td>
                     <td>${tipoProducto.getCategoria()}</td>
                     <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
+                        <a class="button button-editar" href="Controlador?menu=TipoProducto&accion=Editar&codigoTipoProducto=${tipoProducto.getIdTipoProducto()}"><span>Editar</span></a>
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${tipoProducto.getIdTipoProducto()}"><span>Eliminar</span></a>
+                        <div class="modal fade" id="deleteModal-${tipoProducto.getIdTipoProducto()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${tipoProducto.getIdTipoProducto()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${tipoProducto.getIdTipoProducto()}">Advertencia</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Esta seguro que desea eliminar el elemento?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-info" href="Controlador?menu=TipoProducto&accion=Eliminar&codigoTipoProducto=${tipoProducto.getIdTipoProducto()}&Confirmar=Aceptar">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>        

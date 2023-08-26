@@ -46,8 +46,8 @@ public class AfiliadoDAO {
     }
     
     public int agregarAfiliado(Afiliado afl){
-        sql = "insert into Afiliado(rangoAfiliado, beneficios, precioRango, fechaExpiracion)\n" +
-                        "values (?, ?, ?, ?)";
+        sql = "Insert into Afiliado(rangoAfiliado, beneficios, precioRango, fechaExpiracion)"
+                + "values (?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -75,7 +75,8 @@ public class AfiliadoDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
+                afl.setIdAfiliado(id);
                 afl.setRangoAfiliado(rs.getString(2));
                 afl.setBeneficios(rs.getString(3));
                 afl.setPrecioRango(rs.getDouble(4));
@@ -88,12 +89,12 @@ public class AfiliadoDAO {
     }
     
     public int actualizarAfiliado(Afiliado afl){
-        sql = "Update Afiliado"
-                + "set rangoAfiliado = ?,"
-                + "beneficios = ?,"
-                + "precioRango = ?,"
-                + "fechaExpiracion = ?"
-                + "where idAfiliado = ?";
+        sql = "Update Afiliado " +
+            "set rangoAfiliado = ?, " +
+            "beneficios = ?, " +
+            "precioRango = ?, " +
+            "fechaExpiracion = ? " +
+                "where idAfiliado = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

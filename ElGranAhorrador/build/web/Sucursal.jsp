@@ -1,7 +1,7 @@
 <%-- 
-    Document   : Sucursal
-    Created on : 14/08/2023, 11:17:39 PM
-    Author     : HP
+    Document   : Envio
+    Created on : 10/08/2023, 01:39:35 AM
+    Author     : Mr Hermes Jr
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,38 +25,36 @@
         <script src="./js/animacionBoton.js" defer></script>
     </head>
     <body>
-
-
         <div class="card-body">
             <%--Cambiar Nombre a su entidad osea donde dice Envio--%>
-            <h1 class="form-group text-center">Sucursal</h1>
-            <form>
+            <h1 class="form-group text-center">Sucursales</h1>
+            <form action="Controlador?menu=Sucursal" method="POST">
                 <%--Si necesitan agregar más atributos copien lo que esta bajo de este comentario--%>
                 <div class="form-group">
                     <%--Cambian el atributo: de la etiqueta <Label> y colocan sus atributos--%>
                     <label>ID Sucursal:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="text" value="${sucursalEncontrado.getIdSucursal()}" name="txtIdSucursal" class="form-control" readonly="true">
                 </div>
                 <%--Hasta aca, y lo pegan en orden porfa, conforme a sus atributos--%>
                 <div class="form-group">
-                    <label>Nombre Sucursal:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <label>Nombre del Sucursal:</label>
+                    <input type="text" value="${sucursalEncontrado.getNombreSucursal()}" name="txtNombreSucursal" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label>Dirección Sucursal:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <label>Direccion del Sucursal:</label>
+                    <input type="text" value="${sucursalEncontrado.getDireccionSucursal()}" name="txtDireccionSucursal" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Apertura:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="time" step="1" value="${sucursalEncontrado.getApertura()}" name="txtApertura" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Cierre:</label>
-                    <input type="text" value="" name="" class="form-control">
+                    <input type="time" step="1" value="${sucursalEncontrado.getCierre()}" name="txtCierre" class="form-control" required>
                 </div>
                 <div class="botones">
-                    <div name="accion" value="Actualizar" class="button button-actualizar" href="#"><span>Actualizar</span></div>
-                    <div name="accion" value="Agregar" class="button button-agregar" href="#"><span>Agregar</span></div>
+                    <div name="accion" value="Actualizar" class="button button-actualizar"><span><input type="submit" name="accion" value="Actualizar"></span></div>
+                    <div name="accion" value="Agregar" class="button button-agregar"><span><input type="submit" name="accion" value="Agregar"></span></div>
                 </div>
             </form>
         </div>
@@ -80,8 +78,27 @@
                     <td>${sucursal.getApertura()}</td>
                     <td>${sucursal.getCierre()}</td>
                     <td>
-                        <div class="button button-editar" href="#"><span>Editar</span></div>
-                        <div class="button button-eliminar" href="#"><span>Eliminar</span></div>
+                        <a class="button button-editar" href="Controlador?menu=Sucursal&accion=Editar&codigoSucursal=${sucursal.getIdSucursal()}"><span>Editar</span></a>
+                        <a class="button button-eliminar" href="#" data-toggle="modal" data-target="#deleteModal-${sucursal.getIdSucursal()}"><span>Eliminar</span></a>
+                        <div class="modal fade" id="deleteModal-${sucursal.getIdSucursal()}" tabindex="-1" role="dialog" aria-labelledby="deleteModalTitle-${sucursal.getIdSucursal()}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalTitle-${sucursal.getIdSucursal()}">Advertencia</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Esta seguro que desea eliminar el elemento?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-danger" href="#" data-dismiss="modal">Cancelar</a>
+                                        <a class="btn btn-info" href="Controlador?menu=Sucursal&accion=Eliminar&codigoSucursal=${sucursal.getIdSucursal()}&Confirmar=Aceptar">Eliminar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>        
