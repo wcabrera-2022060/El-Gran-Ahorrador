@@ -221,6 +221,17 @@ i {
   padding: 0.6em 2em;
 }
 
+.botones input
+{
+  display: inline-block;
+  position: relative;
+  padding: 0.6em 2em;
+  width: 100%;
+  text-transform: uppercase;
+  border: none;
+  background: transparent;
+}
+
 .button::before,
 .button::after,
 .button span::before,
@@ -288,6 +299,7 @@ i {
     color: #fff;
 }
 
+
 .button-agregar:hover span{
     background-color: #FF5D00;
     color: #fff;
@@ -296,4 +308,23 @@ i {
 .button-actualizar:hover span{
     background-color: #4CAF50;
     color: #fff;
+}
+
+select {
+  padding: 0.5em;
+  width: 20%;
+  border-radius: .2em;
+  border: 1px solid #acacac;
+  color: #181820;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+
+  background: url('https://cdn1.iconfinder.com/data/icons/arrows-vol-1-4/24/dropdown_arrow-512.png');
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  background-position: right;
+  background-origin: content-box;
 }

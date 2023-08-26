@@ -55,12 +55,13 @@ public class ProveedorDAO {
     
     public Proveedor listarCodigoProveedores(int id){
         Proveedor pr = new Proveedor();
-        String sql = "Select* from where idProveedor =" + id;
+        String sql = "Select * from Proveedores where idProveedor = " + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
+                pr.setIdProveedor(rs.getInt(1));
                 pr.setProveedor(rs.getString(2));
                 pr.setCantidadAdquirida(rs.getInt(3));
                 pr.setTotalPagar(rs.getDouble(4));
@@ -73,19 +74,19 @@ public class ProveedorDAO {
     }
     
     
-    public int actulizar(Proveedor pr){
-        String sql = "Update Proveedores"
-                +"proveedor = ?,"
-                +"cantidadAdquirida = ?,"
-                +"totalApagar = ?,"
-                +"idProducto = ?";
+    public int actualizar(Proveedor pr){
+        String sql = "Update Proveedores "
+                +"set proveedor = ?, "
+                +"cantidadAdquirida = ?, "
+                +"totalPagar = ? "
+                +"where idProveedor = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, pr.getProveedor());
             ps.setInt(2, pr.getCantidadAdquirida());
             ps.setDouble(3, pr.getTotalPagar());
-            ps.setInt(4, pr.getIdProducto());
+            ps.setInt(4, pr.getIdProveedor());
             ps.executeUpdate(); 
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,7 +95,7 @@ public class ProveedorDAO {
     }
     
     public void eliminar(int id){
-        String sql = "Delete from Proveedores where idProvedor =" + id;
+        String sql = "Delete from Proveedores where idProveedor = " + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
