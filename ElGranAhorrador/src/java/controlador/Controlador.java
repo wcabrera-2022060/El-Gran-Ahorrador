@@ -5,19 +5,22 @@
  */
 package controlador;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.sql.Time;
-import java.text.ParseException;
-import java.time.LocalDate;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
 import modelo.Afiliado;
 import modelo.AfiliadoDAO;
-
 import modelo.Cliente;
 import modelo.ClienteDAO;
 import modelo.Compra;
@@ -32,6 +35,8 @@ import modelo.Factura;
 import modelo.FacturaDAO;
 import modelo.Inventario;
 import modelo.InventarioDAO;
+import modelo.Login;
+import modelo.LoginDAO;
 import modelo.MetodoPago;
 import modelo.MetodoPagoDAO;
 import modelo.Producto;
@@ -49,6 +54,7 @@ import modelo.TipoProductoDAO;
  *
  * @author user
  */
+@MultipartConfig
 public class Controlador extends HttpServlet {
 
     Cliente cliente = new Cliente();
@@ -93,6 +99,10 @@ public class Controlador extends HttpServlet {
     TipoProducto tipoProducto = new TipoProducto();
     TipoProductoDAO tipoProductoDao = new TipoProductoDAO();
     int idTipoProducto;
+    Login login = new Login();
+    LoginDAO loginDao = new LoginDAO();
+    int idLogin;
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -928,6 +938,39 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("TipoProducto.jsp").forward(request, response);
+        } else if(menu.equals("Login")){
+            switch(accion){
+                case "Listar":
+                    List listaProductos = loginDao.listarLogin();
+                    request.setAttribute("listaLogin", listaProductos);
+                    String ruta = getServletContext().getRealPath("./img/usuario.jpg");
+                    loginDao.primerUsuario(ruta);
+                    break;
+                case "Agregar":
+                    String txtUsuario = request.getParameter("txtUsuario");
+                    String txtContrasena = request.getParameter("txtContrasena");
+                    boolean txtTipoUsuario = Boolean.parseBoolean(request.getParameter("txtTipoUsuario"));
+                    Part part = request.getPart("fileFoto");
+                    InputStream inputStream;
+                    if(part != null && part.getSize() > 0){
+                        inputStream = part.getInputStream();
+                    }else{
+                        String rutaDefault = getServletContext().getRealPath("./img/usuario.jpg");
+                        File imagenDefault = new File(rutaDefault);
+                        inputStream = new FileInputStream(imagenDefault);
+                    }
+                    login.setUsuario(txtUsuario);
+                    login.setContrasena(txtContrasena);
+                    login.setTipoUsuario(txtTipoUsuario);
+                    login.setFoto(inputStream);
+                    loginDao.agregarLogin(login);
+                    
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    break;
+            }
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        } else if (menu.equals("Home")) {
+            request.getRequestDispatcher("Home.jsp").forward(request, response);
         }
     }
 
