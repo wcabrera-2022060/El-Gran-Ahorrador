@@ -25,7 +25,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-custom navbar-mainbg">
-            <i class="navbar-brand navbar-logo" href="#">El Gran Ahorrador</i>
+            <img src="./img/LogoElGranAhorradorSinFondo.png" width="155px" height="80px">
             <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars text-white"></i>
             </button>

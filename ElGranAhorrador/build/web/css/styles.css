@@ -370,3 +370,42 @@ select {
 .margen{
     margin-bottom: 5px;
 }
+
+/*Resto del nuevo css*/
+
+ 
+
+.bloque-1 {
+    background-color: #1E56A0;
+    padding: 100px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+ 
+
+.bloque-2 {
+    background-color: #F8F9FA;
+    padding: 150px;
+    color: black;
+}
+
+ 
+
+.imagen-derecha {
+    margin-left: 450px;
+    width: 500px;
+}
+
+ 
+
+.texto-izquierda {
+    float: left;
+}
+
+ 
+
+.texto-derecha {
+    float: right;
+}

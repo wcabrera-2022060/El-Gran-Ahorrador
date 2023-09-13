@@ -170,6 +170,13 @@ Create table Factura(
 		(idCupon) references Cupones(idCupon)
 );
 
+create table Detalle_compra (
+	nombreCliente varchar(150),
+  nombreEmpleado varchar(150),
+  nombreProducto varchar(150),
+  cantidadProducto int
+);
+
 -- ------------------ Insertar Datos ---------------------
 
 
@@ -185,10 +192,10 @@ Insert into Sucursales(nombreSucursal, direccionSucursal, apertura, cierre)
 			('Atanasio','Calz. Atanasio Tzul, Guatemala',"07:00","22:00");
 
 -- Login
-Insert into Login(usuario, contrasena, tipoUsuario) -- , foto)
-	values	('martinez','12345',true), -- ,load_file('ruta de imagen')),
-			('ejemplo','54321',true); -- ,load_file('ruta de imagen'));
-
+Insert into Login(usuario, contrasena, tipoUsuario, foto) -- , foto)
+	values	('martinez','12345',true,''), -- ,load_file('ruta de imagen')),
+			('ejemplo','54321',true,load_file('C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/descarga.jpg')); -- ,load_file('ruta de imagen'));
+select * from login;
 -- Afiliado
 Insert into Afiliado(rangoAfiliado, beneficios, precioRango, fechaExpiracion)
 	values	('platino','50% de descuento','500.00','2024-05-20'),
@@ -245,10 +252,41 @@ Insert into Proveedores(proveedor, cantidadAdquirida, totalPagar, idProducto)
             
 -- Compra
 Insert into Compra(cantidadProducto, idEmpleado, idCliente, idProducto)
-	values	('1',1,1,1),
-			('1',1,2,2);
+	values	(1,1,1,1),
+					(1,1,2,2);
+          use DBElGranAhorrador;
+          select * from compra;
             
 -- Factura
 Insert into Factura(fecha, idCompra, idEnvio, idMetodoPago, idCupon)
 	values	('2023-07-05',1,1,1,1),
-			('2023-07-08',2,2,2,1);
+					('2023-07-08',2,2,2,1);
+
+DELIMITER $$
+	CREATE PROCEDURE obtenerDatosCompra(IN _idCliente INT)
+		BEGIN
+			SELECT CL.idCliente, CL.nombreCliente, E.nombreEmpleado, P.nombreProducto, C.cantidadProducto
+			FROM Compra C
+			INNER JOIN Clientes CL 
+			ON CL.idCliente = C.idCliente
+			INNER JOIN Empleados E
+			ON E.idEmpleado = C.idEmpleado
+			INNER JOIN Productos P
+			ON P.idProducto = C.idProducto
+			WHERE C.idCliente = _idCliente;
+    END $$
+DELIMITER ;
+
+DELIMITER $$
+	CREATE PROCEDURE obtenerTodosDatosCompra()
+		BEGIN
+			SELECT CL.idCliente, CL.nombreCliente, E.nombreEmpleado, P.nombreProducto, C.cantidadProducto
+			FROM Compra C
+			INNER JOIN Clientes CL 
+			ON CL.idCliente = C.idCliente
+			INNER JOIN Empleados E
+			ON E.idEmpleado = C.idEmpleado
+			INNER JOIN Productos P
+			ON P.idProducto = C.idProducto;
+    END $$
+DELIMITER ;

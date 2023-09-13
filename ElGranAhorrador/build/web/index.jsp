@@ -40,7 +40,7 @@
                                             <form class="form-sign" action="Validar" method="POST">
                                                 <div class="d-flex justify-content-center align-items-center mb-3 pb-1">
                                                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                                    <img src="./img/logo.jpg" width="225px" height="200px">
+                                                    <img src="./img/LogoElGranAhorradorMejorada.png" width="275px" height="200px">
                                                 </div>
 
                                                 <h5 class="fw-normal text-center mb-3 pb-3" style="letter-spacing: 1px;">Inicia sesión</h5>
@@ -73,7 +73,7 @@
 
                                                 <div class="d-flex justify-content-center align-items-center mb-3 pb-1">
                                                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                                                    <img src="./img/logo.jpg" width="225px" height="200px">
+                                                     <img src="./img/LogoElGranAhorradorMejorada.png" width="275px" height="200px">
                                                 </div>
 
                                                 <h5 class="fw-normal text-center mb-3 pb-3" style="letter-spacing: 1px;">Registrate</h5>
