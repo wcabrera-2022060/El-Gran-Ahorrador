@@ -15,6 +15,8 @@ public class ClienteDAO {
     ResultSet rs;
     int resp;
     
+
+    
     public Cliente validar(int idCliente, String nombreCliente){
         Cliente cliente = new Cliente();
         String sql = "select * from Clientes where idCliente = ? and nombreCliente = ?";
@@ -36,6 +38,28 @@ public class ClienteDAO {
         }
         return cliente;
     }
+    //Para el buscar del carrito
+    
+    public Cliente buscar (String nombreCli){
+        Cliente cl = new Cliente();
+        String sql = "Select * from Clientes where nombreCliente = '" + nombreCli + "'";
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                cl.setIdCliente(rs.getInt(1));
+                cl.setNombreCliente(rs.getString(2));
+                cl.setApellidoCliente(rs.getString(3));
+                cl.setTelefonoCliente(rs.getString(4));
+                cl.setDireccionCliente(rs.getString(5));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return cl;
+    }
+         
     
     public List listarCliente(){
         String sql = "Select C.idCliente,\n" +

@@ -25,17 +25,20 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-custom navbar-mainbg">
-            <a class="navbar-brand navbar-logo" href="#">El Gran Ahorrador</a>
+            <img src="./img/LogoElGranAhorradorSinFondo.png" width="155px" height="80px">
             <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars text-white"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navbar-nav-scroll">
                     
+                    
                     <li class="nav-item active">
-                        <a class="nav-link" href="Principal.jsp"><i class="far fa-copy"></i>Home</a>
+                        <a class="nav-link" href="Controlador?menu=Home" target="myFrame"><i class="far fa-copy"></i>Home</a>
                     </li>
-                    <%--Cambiar el href como esta en la entidad de envio, con base a su archivo sp y su entidad, y colocar el target--%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?menu=Login&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Login</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=TipoEmpleado&accion=Listar" target="myFrame"><i class="far fa-copy"></i>Tipo Empleado</a>
                     </li>
@@ -87,7 +90,8 @@
                 </button>
                 <div class="dropdown-menu text-center dropdown-menu-edit" aria-labellebdy="dropdownMenuButton">
                     <a class="dropdown-item" href="#">
-                        <img src="img/usuario.jpg" alt="60" width="60"/>
+                        <img src="ControladorIMG?id=${login.getIdLogin()}" alt="60" width="60"/>
+                        
                     </a>
                     <a class="dropdown-item" href="#" >${login.getUsuario()}</a>
                     <a class="dropdown-item" href="#" >${login.getUsuario()}@gmail.com</a>

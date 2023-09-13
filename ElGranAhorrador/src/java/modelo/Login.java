@@ -1,6 +1,6 @@
 package modelo;
 
-import java.sql.Blob;
+import java.io.InputStream;
 
 
 public class Login {
@@ -8,12 +8,12 @@ public class Login {
     private String usuario;
     private String contrasena;
     private boolean tipoUsuario;
-    private Blob foto;
+    private InputStream foto;
 
     public Login() {
     }
 
-    public Login(int idLogin, String usuario, String contrasena, boolean tipoUsuario, Blob foto) {
+    public Login(int idLogin, String usuario, String contrasena, boolean tipoUsuario, InputStream foto) {
         this.idLogin = idLogin;
         this.usuario = usuario;
         this.contrasena = contrasena;
@@ -53,11 +53,13 @@ public class Login {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public Blob getFoto() {
+    public InputStream getFoto() {
         return foto;
     }
 
-    public void setFoto(Blob foto) {
+    public void setFoto(InputStream foto) {
         this.foto = foto;
     }
+
+    
 }
