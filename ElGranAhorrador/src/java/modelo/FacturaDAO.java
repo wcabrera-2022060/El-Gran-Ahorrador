@@ -31,7 +31,7 @@ public class FacturaDAO {
                 fc.setFecha(rs.getDate(2));
                 fc.setIdCompra(rs.getInt(3));
                 fc.setIdEnvio(rs.getInt(4));
-                fc.setIdMetodoPago(5);
+                fc.setIdMetodoPago(rs.getInt(5));
                 fc.setIdCupon(rs.getInt(6));
                 listaFactura.add(fc);
             }

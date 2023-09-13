@@ -85,11 +85,11 @@ public class TipoProductoDAO {
     }
     
     //Método Editar TipoProducto
-    public int actualizar(TipoProducto tp){
-        String sql = "update TipoProducto T"
-                + "set T.tipoProducto = ?,"
-                + "T.descripcion = ?,"
-                + "T.categoria = ?,"
+    public int actualizarTipoProducto(TipoProducto tp){
+        String sql = "update TipoProducto T "
+                + "set T.tipoProducto = ?, "
+                + "T.descripcion = ?, "
+                + "T.categoria = ? "
                 + "where T.idTipoProducto = ?";
         try {
             con = cn.Conexion();

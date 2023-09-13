@@ -60,7 +60,7 @@
                         <label>ID Tipo Producto:</label>
                         <select name="txtIdTipoProducto">
                             <c:forEach var="tipoProducto" items="${tipoProductos}">
-                                <option name="txtIdTipoProducto" value="${tipoProducto.getIdTipoProducto()}">${tipoProducto.getIdTipoProducto()}</option>
+                                <option name="txtIdTipoProducto" value="${tipoProducto.getIdTipoProducto()}">${tipoProducto.getIdTipoProducto()} || ${tipoProducto.getTipoProducto()}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -69,7 +69,7 @@
                         <label>ID Inventario:</label>
                         <select name="txtIdInventario">
                             <c:forEach var="inventario" items="${inventarios}">
-                                <option name="txtIdInventario" value="${inventario.getIdInventario()}">${inventario.getIdInventario()}</option>
+                                <option name="txtIdInventario" value="${inventario.getIdInventario()}">${inventario.getIdInventario()} || ${inventario.getCantidadDisponible()}</option>
                             </c:forEach>
                         </select>
                     </div>

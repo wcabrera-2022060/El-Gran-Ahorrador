@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label>Teléfono Contacto:</label>
-                    <input type="number" value="${envioEncontrado.getTelefonoContacto()}" name="txtTelefonoContacto" class="form-control" required >
+                    <input type="number" min="1" step="any" value="${envioEncontrado.getTelefonoContacto()}" name="txtTelefonoContacto" class="form-control" required >
                 </div>
                 <div class="form-group">
                     <label>ID Empleado:</label>

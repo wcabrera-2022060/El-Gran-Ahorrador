@@ -15,7 +15,8 @@ public class MetodoPagoDAO {
     int resp;
     
     public List listarMetodoPago(){
-        String sql = "Select MP.idMetodoPago, MP.metodoPago, MP.pagoTotal, MP.banco from MetodoPago MP";
+        //String sql = "Select MP.idMetodoPago, MP.metodoPago, MP.pagoTotal, MP.banco from MetodoPago MP";
+        String sql = "select * from MetodoPago";
         List<MetodoPago> listaMetodoPago = new ArrayList<>();
         try{
             con = cn.Conexion();
@@ -37,7 +38,7 @@ public class MetodoPagoDAO {
     
     
     public int agregarMetodoPago(MetodoPago mp){
-        String sql = "Insert into MetodoPago (metodoPago, pagoTotal, banco) values (?,?,?);";
+        String sql = "insert into MetodoPago (metodoPago, pagoTotal, banco) values (?,?,?)";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -53,7 +54,7 @@ public class MetodoPagoDAO {
     
     public MetodoPago buscarMetodoPago(int id){
         MetodoPago mp = new MetodoPago();
-        String sql = "Select MP.idMetodoPago, MP.metodoPago, MP.pagoTotal, MP.banco from MetodoPago MP where MP.idMetodoPago = "+id;
+        String sql = "Select * from MetodoPago where idMetodoPago = "+id;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -72,11 +73,7 @@ public class MetodoPagoDAO {
     
     
     public int actualizarMetodoPago(MetodoPago mp){
-        String sql = "Update MetodoPago"
-                + "set metodoPago = ?,"
-                + "pagoTotal = ?,"
-                + "banco = ?"
-                + "where idMetodoPago = ?";
+        String sql = "Update MetodoPago set metodoPago = ?,pagoTotal = ?, banco = ? where idMetodoPago = ?";
         
         try{
             con = cn.Conexion();
@@ -94,7 +91,7 @@ public class MetodoPagoDAO {
     
     
     public void eliminarMetodoPago(int id){
-        String sql = "delete from MetodoPago where IdMetodoPago = "+id;
+        String sql = "delete from MetodoPago where idMetodoPago = "+id;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

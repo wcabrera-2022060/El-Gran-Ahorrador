@@ -46,11 +46,11 @@
                 </div>
                 <div class="form-group">
                     <label>Apertura:</label>
-                    <input type="text" value="${sucursalEncontrado.getApertura()}" name="txtApertura" class="form-control" required>
+                    <input type="time" step="1" value="${sucursalEncontrado.getApertura()}" name="txtApertura" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Cierre:</label>
-                    <input type="text" value="${sucursalEncontrado.getCierre()}" name="txtCierre" class="form-control" required>
+                    <input type="time" step="1" value="${sucursalEncontrado.getCierre()}" name="txtCierre" class="form-control" required>
                 </div>
                 <div class="botones">
                     <div name="accion" value="Actualizar" class="button button-actualizar"><span><input type="submit" name="accion" value="Actualizar"></span></div>

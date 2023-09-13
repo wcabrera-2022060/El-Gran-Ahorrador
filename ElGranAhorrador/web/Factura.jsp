@@ -55,7 +55,7 @@
                         <label>ID Envio</label>
                         <select name="txtIdEnvio">
                             <c:forEach var="envio" items="${envios}">
-                                <option name="txtIdEnvio" value="${envio.getIdEnvio()}">${envio.getIdEnvio()}</option>
+                                <option name="txtIdEnvio" value="${envio.getIdEnvio()}">${envio.getIdEnvio()} || ${envio.getDireccionEnvio()}</option>
                             </c:forEach>
                         </select>
                 </div>
@@ -63,7 +63,7 @@
                         <label>ID Metodo Pago</label>
                         <select name="txtIdMetodoPago">
                             <c:forEach var="metodoPago" items="${metodoPagos}">
-                                <option name="txtIdMetodoPago" value="${metodoPago.getIdMetodoPago()}">${metodoPago.getIdMetodoPago()}</option>
+                                <option name="txtIdMetodoPago" value="${metodoPago.getIdMetodoPago()}">${metodoPago.getIdMetodoPago()} || ${metodoPago.getMetodoPago()}</option>
                             </c:forEach>
                         </select>
                 </div>
@@ -71,7 +71,7 @@
                         <label>ID Cupon</label>
                         <select name="txtIdCupon">
                             <c:forEach var="cupon" items="${cupones}">
-                                <option name="txtIdCupon" value="${cupon.getIdCupon()}">${cupon.getIdCupon()}</option>
+                                <option name="txtIdCupon" value="${cupon.getIdCupon()}">${cupon.getIdCupon()} || ${cupon.getFechaCaducidad()} || ${cupon.getDescuento()}</option>
                             </c:forEach>
                         </select>
                 </div>

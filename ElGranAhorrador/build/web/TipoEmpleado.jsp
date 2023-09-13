@@ -3,8 +3,6 @@
     Created on : 15/08/2023, 06:26:55 PM
     Author     : user
 --%>
-
-<%@page import="modelo.TipoEmpleadoDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

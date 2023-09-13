@@ -63,6 +63,7 @@ public class CuponDAO {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
+                cu.setIdCupon(id);
                 cu.setFechaCaducidad(rs.getDate(2));
                 cu.setDescuento(rs.getDouble(3));
                 cu.setValidez(rs.getBoolean(4));
@@ -74,17 +75,18 @@ public class CuponDAO {
     }
     
     public int actualizar(Cupon cu){
-        String sql = "Update Cupones"
-                + "fechaCaducidad = ?,"
+        String sql = "Update Cupones "
+                + "set fechaCaducidad = ?,"
                 + "descuento = ?,"
-                + "validez = ?,"
-                + "where idCupones = ?";
+                + "validez = ? "
+                + "where idCupon = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setDate(1, cu.getFechaCaducidad());
             ps.setDouble(2, cu.getDescuento());
             ps.setBoolean(3, cu.getValidez());
+            ps.setInt(4, cu.getIdCupon());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,7 +95,7 @@ public class CuponDAO {
     }
     
     public void eliminar(int id){
-        String sql = "Delete from Cupones where idCupones=" + id;
+        String sql = "Delete from Cupones where idCupon=" + id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
